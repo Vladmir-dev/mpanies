@@ -35,6 +35,8 @@ const Item = ({ title, options }) => {
           {isOpen ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
         </button>
       </div>
+
+      
       {isOpen && title !== "Price" ? (
         <div className="mt-4 text-[18px]">
           {options.map((option) => (

@@ -6,7 +6,6 @@ const SideBar = () => {
     { title: "Availability", options: ["In stock", "Out of stock"] },
     { title: "Price", options: ["Option A", "Option B", "Option C"] },
     { title: "Product Type", options: ["Cream", "Lotion"] },
-    
   ];
   return (
     <div className="md:flex-[1.8] h-auto  p-3 flex justify-start items-start flex-col gap-5">
@@ -19,19 +18,6 @@ const SideBar = () => {
         {items.map((item, index) => (
           <Item key={index} title={item.title} options={item.options} />
         ))}
-      </div>
-      <div className="flex flex-col gap-5">
-        {/* <div>
-          <h1>Availability</h1>
-        </div>
-
-        <div>
-          <h1>Price</h1>
-        </div>
-
-        <div>
-          <h1>Product Type</h1>
-        </div> */}
       </div>
     </div>
   );

@@ -208,6 +208,7 @@ const Smain = () => {
           </select>
         </div>
       </div>
+      
       <div className="mt-[20px] grid grid-cols-4">
         {records.map((item, index) => (
           <div key={index}>
@@ -215,6 +216,7 @@ const Smain = () => {
           </div>
         ))}
       </div>
+
       <nav className="w-full flex justify-center items-center mt-[50px]">
         <ul className="flex gap-5">
           <li
