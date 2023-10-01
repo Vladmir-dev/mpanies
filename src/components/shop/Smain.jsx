@@ -197,10 +197,10 @@ const Smain = () => {
 
   return (
     <div className="md:flex-[8.2] bg-white w-full h-auto flex flex-col">
-      <div className="w-full bg-[#ffebe7] p-6 rounded-md flex justify-end items-end">
+      <div className="w-full bg-green-200 p-6 rounded-md flex justify-end items-end">
         <div className="flex gap-5 text-[18px] font-bold">
           <h4>Sort By:</h4>
-          <select className="">
+          <select className="bg-green-200">
             <option>Alphabetically, A-Z</option>
             <option>Alphabetically, z-A</option>
             <option>Price, Low to High</option>
@@ -233,7 +233,7 @@ const Smain = () => {
               onClick={() => changeCPage(n)}
               key={i}
               className={`w-[40px] h-[40px] text-white text-[30px] flex justify-center items-center duration-500 ${
-                currentPage === n ? "bg-[#ffaf9b]" : "bg-black"
+                currentPage === n ? "bg-green-300" : "bg-black"
               }`}
             >
               {n}
@@ -241,7 +241,7 @@ const Smain = () => {
           ))}
           <li
             onClick={nextPage}
-            className="bg-black w-[40px] h-[40px] text-white text-[30px] flex justify-center items-center hover:bg-[#ffaf9b] duration-500"
+            className="bg-black w-[40px] h-[40px] text-white text-[30px] flex justify-center items-center hover:bg-green-300 duration-500"
           >
             <MdKeyboardArrowRight />
           </li>

@@ -72,7 +72,7 @@ const bg = "[#A5D6A6]"
         <div
           className={
             open
-              ? "flex md:flex-row flex-col ml-[-20px] md:ml-0 md:h-auto h-[100vh] md:p-0 p-4 md:bg-inherit transition ease-in-out delay-450 items-start justify-start md:relative fixed md:top-0 top-[130px] opacity-100 bg-[#ffebe7]  md:shadow-none shadow-xl md:w-auto w-[300px] list-none gap-8 text-[20px]"
+              ? "flex md:flex-row flex-col ml-[-20px] md:ml-0 md:h-auto h-[100vh] md:p-0 p-4 md:bg-inherit transition ease-in-out delay-450 items-start justify-start md:relative fixed md:top-0 top-[130px] opacity-100 bg-green-200  md:shadow-none shadow-xl md:w-auto w-[300px] list-none gap-8 text-[20px]"
               : "hidden md:block md:flex md:flex-row md:list-none md:gap-8 text-[20px]"
           }
         >
@@ -80,7 +80,7 @@ const bg = "[#A5D6A6]"
             <Link
               to={item.link}
               key={index}
-              className="hover:text-[#ffaf9b] duration-500"
+              className="hover:text-green-100 duration-500"
             >
               <li>{item.name}</li>
             </Link>
