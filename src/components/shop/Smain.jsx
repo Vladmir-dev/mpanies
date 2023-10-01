@@ -209,7 +209,7 @@ const Smain = () => {
         </div>
       </div>
       
-      <div className="mt-[20px] grid grid-cols-4">
+      <div className="mt-[20px] grid md:grid-cols-4 grid-cols-2 mr-15">
         {records.map((item, index) => (
           <div key={index}>
             <Scard item={item} />

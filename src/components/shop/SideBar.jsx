@@ -8,7 +8,8 @@ const SideBar = () => {
     { title: "Product Type", options: ["Cream", "Lotion"] },
   ];
   return (
-    <div className="md:flex-[1.8] h-auto  p-3 flex justify-start items-start flex-col gap-5">
+    <div className="md:flex-[1.8] hidden md:block">
+    <div className="h-auto  p-3 flex justify-start items-start flex-col gap-5">
       <div className="w-full text-[26px]">
         <h1>Filter</h1>
         <hr className="border-[2px] border-solid w-full" />
@@ -19,6 +20,9 @@ const SideBar = () => {
           <Item key={index} title={item.title} options={item.options} />
         ))}
       </div>
+
+    </div>
+      
     </div>
   );
 };

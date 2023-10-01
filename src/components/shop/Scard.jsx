@@ -10,7 +10,7 @@ const Scard = ({ item }) => {
     <div
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
-      className="m-2 bg-white md:max-w-[260px] md:w-[250px] w-[300px] "
+      className="m-2 bg-white md:max-w-[260px] md:w-[250px] w-[200px] "
     >
       <div className="w-full h-[400px] md:h-[400px] group">
         <img src={image5} alt="product" className="w-full h-full" />

@@ -17,11 +17,12 @@ const ShopPage = () => {
   return (
     <div>
       <Navbar />
-      <div style={bgImageStyle} className="h-[250px]">
-        <div className="flex justify-center items-center h-full bg-green-200/60">
+      <div style={bgImageStyle} className="h-[250px] w-full">
+        <div className="flex justify-center items-center h-full  bg-green-200/60">
           <h1 className="uppercase text-[30px]">Collection</h1>
         </div>
       </div>
+      
       <Shop />
       <Footer />
     </div>
