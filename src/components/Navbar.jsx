@@ -113,10 +113,10 @@ const bg = "[#A5D6A6]"
 
           <div>
             <button onClick={() => setShowCart(!showCart)}>
-              <div className="bg-[#ffaf9b] text-[10px] px-2 absolute mt-[-13px] ml-[11px] rounded-full">
+              <div className="bg-green-100 text-[10px] px-2 absolute mt-[-13px] ml-[11px] rounded-full">
                 0
               </div>
-              <FaCartPlus className="hover:text-[#ffaf9b]" />
+              <FaCartPlus className="hover:text-green-100" />
             </button>
             {showCart && (
               <div className="bg-white fixed md:h-[100vh] h-[120vh] mt-[-80px] md:w-[370px] p-4 w-[300px] md:ml-[-240px] right-0  shadow-xl">

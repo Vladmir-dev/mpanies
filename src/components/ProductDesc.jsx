@@ -14,9 +14,9 @@ const ProductDesc = () => {
   return (
     <div
       style={bgImageStyle}
-      className="w-[100vw] md:h-[90vh] h-[500px] mb-[10px]  flex flex-col justify-center items-center"
+      className="w-[100vw] md:h-[90vh] h-[500px] mb-[10px]  flex flex-col justify-center items-center backdrop-blur-2xl"
     >
-      <div className="w-full flex flex-col justify-center items-center bg-[#ffebe7]/60 font-normal h-[100%] gap-8">
+      <div className="w-full flex flex-col justify-center items-center bg-green-200/60 font-normal h-[100%] gap-8">
         <h1 className="text-[20px] text-center">
           CLEAN ORGANIC AND NATURAL COSMETIC PRODUCTS
         </h1>
