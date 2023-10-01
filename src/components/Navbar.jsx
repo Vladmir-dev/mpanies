@@ -64,9 +64,13 @@ const bg = "[#A5D6A6]"
             )}
           </button>
         </div>
-        <div>
+
+        <Link to="/">
+          <div>
           <img src={logo} alt="logo" className="w-[120px]" />
         </div>
+        </Link>
+        
 
         {/* <div className="hidden md:block"> */}
         <div
@@ -80,7 +84,7 @@ const bg = "[#A5D6A6]"
             <Link
               to={item.link}
               key={index}
-              className="hover:text-green-100 duration-500"
+              className="hover:text-green-500 duration-500"
             >
               <li>{item.name}</li>
             </Link>
@@ -109,14 +113,14 @@ const bg = "[#A5D6A6]"
         {/* </div> */}
 
         <div className="flex gap-8 text-[24px]">
-          <BsPersonFill className="hidden md:block hover:text-[#ffaf9b]" />
+          <BsPersonFill className="hidden md:block hover:text-green-500" />
 
           <div>
             <button onClick={() => setShowCart(!showCart)}>
-              <div className="bg-green-100 text-[10px] px-2 absolute mt-[-13px] ml-[11px] rounded-full">
+              <div className="bg-green-400 text-[10px] px-2 absolute mt-[-13px] ml-[11px] rounded-full">
                 0
               </div>
-              <FaCartPlus className="hover:text-green-100" />
+              <FaCartPlus className="hover:text-green-400" />
             </button>
             {showCart && (
               <div className="bg-white fixed md:h-[100vh] h-[120vh] mt-[-80px] md:w-[370px] p-4 w-[300px] md:ml-[-240px] right-0  shadow-xl">
@@ -139,7 +143,7 @@ const bg = "[#A5D6A6]"
           </div>
           <div className="">
             <button onClick={() => setSearch(!search)}>
-              <AiOutlineSearch className="hover:text-[#ffaf9b]" />
+              <AiOutlineSearch className="hover:text-green-500" />
             </button>
             {search && (
               <div className="bg-white fixed w-[100vw] h-[120px] top-0 left-0 flex justify-center gap-3 md:p-5 p-2 items-center">
