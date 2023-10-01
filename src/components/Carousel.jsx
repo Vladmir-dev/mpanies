@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import slider2 from '../assets/slider-2.jpg'
-import slider1 from '../assets/slider-1.jpg'
+import slider1 from '../assets/slider-1-removebg.png'
 
 const Carousel = () => {
   const settings = {
@@ -26,14 +26,14 @@ const Carousel = () => {
                 are formulated to evenout skin tone and restore skin's natiral
                 color get even, clear and radiant skin
               </p>
-              <button className="bg-black text-white px-[20px] py-[15px] mt-[20px] w-[150px]">View More</button>
+              <button className="bg-black text-white px-[20px] py-[15px] hover:bg-green-600 duration-500 mt-[20px] w-[150px]">View More</button>
             </div>
             <div className="h-full  hidden md:block top-0">
                 <img src={slider2} className="h-full"/>
             </div>
           </div>
         </div>
-        <div className="bg-[#f4dbd6] flex justify-center items-center w-[100vw] h-[100vh]">
+        <div className="bg-[#A5D6A6] flex justify-center items-center w-[100vw] h-[100vh]">
           <div className="w-full h-full flex justify-center items-center px-4">
             
             <div className="h-full hidden md:block ">
@@ -46,7 +46,7 @@ const Carousel = () => {
                 are formulated to evenout skin tone and restore skin's natiral
                 color get even, clear and radiant skin
               </p>
-              <button className="bg-black text-white px-[20px] py-[15px] mt-[20px]">View More</button>
+              <button className="bg-black text-white px-[20px] py-[15px] mt-[20px] hover:bg-green-600 duration-500">View More</button>
             </div>
           </div>
         </div>

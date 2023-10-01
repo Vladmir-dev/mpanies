@@ -10,17 +10,17 @@ const Scard = ({ item }) => {
     <div
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
-      className="m-2 bg-white md:w-[250px] w-[300px] "
+      className="m-2 bg-white md:max-w-[260px] md:w-[250px] w-[300px] "
     >
       <div className="w-full h-[400px] md:h-[400px] group">
         <img src={image5} alt="product" className="w-full h-full" />
         {/* {show && ( */}
         <div className="hidden group-hover:block duration-500">
           <div className="bg-red-500 flex  justify-center items-center md:mt-[-200px] mt-[-200px] md:gap-8 gap-5 duration-500">
-            <button className="p-2 bg-white hover:bg-black hover:text-white duration-500">
+            <button className="p-2 rounded-md bg-white hover:bg-black hover:text-white duration-500">
               <FaCartPlus />
             </button>
-            <button className="p-2 bg-white hover:bg-black hover:text-white duration-500">
+            <button className="p-2 bg-white rounded-md hover:bg-black hover:text-white duration-500">
               <AiOutlineHeart />
             </button>
           </div>

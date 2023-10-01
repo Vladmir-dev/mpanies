@@ -45,12 +45,12 @@ const Navbar = () => {
       window.removeEventListener("scroll", () => {});
     };
   }, []);
-
+const bg = "[#A5D6A6]"
   return (
     <div
       className={
         show
-          ? "w-full bg-[#ffebe7] flex justify-center items-center fixed z-10"
+          ? "w-full bg-green-200 flex justify-center items-center fixed z-10 shadow-md"
           : "fixed w-full  flex justify-center items-center z-10"
       }
     >
