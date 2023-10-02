@@ -6,170 +6,176 @@ import image3 from "../../assets/shop-new-21.jpg";
 import image4 from "../../assets/shop-new-22.jpg";
 import image5 from "../../assets/shop-new-23.jpg";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { useSelector } from "react-redux"
 
 const Smain = () => {
-  const products = [
-    {
-      id: 1,
-      name: "Luke Moisturizing",
-      image1: image1,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 2,
-      name: "Luke Moisturizing",
-      image1: image2,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 3,
-      name: "Luke Moisturizing",
-      image1: image3,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 4,
-      name: "Luke Moisturizing",
-      image1: image4,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 5,
-      name: "Luke Moisturizing",
-      image1: image5,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 6,
-      name: "Luke Moisturizing",
-      image1: image1,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 7,
-      name: "Luke Moisturizing",
-      image1: image2,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 8,
-      name: "Luke Moisturizing",
-      image1: image3,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 9,
-      name: "Luke Moisturizing",
-      image1: image4,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 10,
-      name: "Luke Moisturizing",
-      image1: image5,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 11,
-      name: "Luke Moisturizing",
-      image1: image1,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 12,
-      name: "Luke Moisturizing",
-      image1: image2,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 13,
-      name: "Luke Moisturizing",
-      image1: image3,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 14,
-      name: "Luke Moisturizing",
-      image1: image4,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 15,
-      name: "Luke Moisturizing",
-      image1: image5,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 17,
-      name: "Luke Moisturizing",
-      image1: image1,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 18,
-      name: "Luke Moisturizing",
-      image1: image2,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 19,
-      name: "Luke Moisturizing",
-      image1: image3,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 20,
-      name: "Luke Moisturizing",
-      image1: image4,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-    {
-      id: 21,
-      name: "Luke Moisturizing",
-      image1: image5,
-      image2: "",
-      price: "7.50",
-      discount: "2%",
-    },
-  ];
+
+  const products = useSelector((state) => state.products.products)
+
+  // console.log("all products ==>", products)
+
+  // const products = [
+  //   {
+  //     id: 1,
+  //     name: "Luke Moisturizing",
+  //     image1: image1,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Luke Moisturizing",
+  //     image1: image2,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Luke Moisturizing",
+  //     image1: image3,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Luke Moisturizing",
+  //     image1: image4,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Luke Moisturizing",
+  //     image1: image5,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "Luke Moisturizing",
+  //     image1: image1,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 7,
+  //     name: "Luke Moisturizing",
+  //     image1: image2,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 8,
+  //     name: "Luke Moisturizing",
+  //     image1: image3,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 9,
+  //     name: "Luke Moisturizing",
+  //     image1: image4,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 10,
+  //     name: "Luke Moisturizing",
+  //     image1: image5,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 11,
+  //     name: "Luke Moisturizing",
+  //     image1: image1,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 12,
+  //     name: "Luke Moisturizing",
+  //     image1: image2,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 13,
+  //     name: "Luke Moisturizing",
+  //     image1: image3,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 14,
+  //     name: "Luke Moisturizing",
+  //     image1: image4,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 15,
+  //     name: "Luke Moisturizing",
+  //     image1: image5,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 17,
+  //     name: "Luke Moisturizing",
+  //     image1: image1,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 18,
+  //     name: "Luke Moisturizing",
+  //     image1: image2,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 19,
+  //     name: "Luke Moisturizing",
+  //     image1: image3,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 20,
+  //     name: "Luke Moisturizing",
+  //     image1: image4,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  //   {
+  //     id: 21,
+  //     name: "Luke Moisturizing",
+  //     image1: image5,
+  //     image2: "",
+  //     price: "7.50",
+  //     discount: "2%",
+  //   },
+  // ];
 
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 16;
@@ -209,12 +215,22 @@ const Smain = () => {
         </div>
       </div>
       
-      <div className="mt-[20px] grid md:grid-cols-4 grid-cols-2 mr-15">
-        {records.map((item, index) => (
-          <div key={index}>
+      <div >
+        {records && records.length > 0 ? (
+          <div className="mt-[20px] grid md:grid-cols-4 grid-cols-2 mr-15">
+          {
+            records.map((item, index) => (
+                    <div key={index}>
             <Scard item={item} />
           </div>
         ))}
+
+          </div>
+          ): (
+            <div>
+              <h1>Empty</h1>
+            </div>
+          ) }
       </div>
 
       <nav className="w-full flex justify-center items-center mt-[50px]">

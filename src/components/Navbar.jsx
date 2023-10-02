@@ -14,6 +14,7 @@ import {
 import {MdOutlineRemoveShoppingCart} from 'react-icons/md'
 import {useSelector, useDispatch} from 'react-redux'
 import { add_to_cart, decrease_qty} from '../features/cart/cartActions'
+import { AllProducts } from '../features/products/productActions'
 
 const Navbar = () => {
   const links = [
@@ -35,7 +36,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [search, setSearch] = useState(false);
-
+  const token = "h3oih32oih'pricei"
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 10) {
@@ -49,6 +50,9 @@ const Navbar = () => {
     };
   }, []);
 
+
+
+
 // const bg = "[#A5D6A6]"
 const dispatch = useDispatch()
 const cart = useSelector((state) => state.cart.cartItems)
@@ -58,6 +62,10 @@ console.log("cart==>", cart)
     (price, item) => price + item.qty * item.price,
     0,
   );
+
+useEffect(() => {
+  dispatch(AllProducts(token))
+}, [dispatch, token])
 
   return (
     <div
@@ -136,17 +144,14 @@ console.log("cart==>", cart)
               <FaCartPlus className="hover:text-green-400" />
             </button>
             {showCart && (
-              <div className="bg-white fixed md:h-[100vh] h-[120vh] mt-[-80px] md:w-[370px] p-4 w-[300px] md:ml-[-240px] right-0  shadow-xl">
+              <div className="bg-white fixed md:h-[100vh] h-[120vh] mt-[-80px] md:w-[450px] p-4 w-[300px] md:ml-[-240px] right-0  shadow-xl">
                 <div className=" flex justify-between">
                   <h1>Your Cart</h1>
                   <button onClick={() => setShowCart(!showCart)}>
                     <AiOutlineClose className="text-[27px]" />
                   </button>
                 </div>
-                <div className="flex justify-between uppercase mt-[20px]">
-                  <h4>Product</h4>
-                  <h4>Total</h4>
-                </div>
+               
                 <hr />
                 <div>
                   {cart.length <= 0 ? (
@@ -173,7 +178,7 @@ console.log("cart==>", cart)
                         ) : (
                           <div className="flex flex-col justify-between h-[90vh]">
                             <div>
-                              <div className="flex justify-between items-end text-[18px] font-bold text-[#1948c9] mt-[10px] uppercase">
+                              <div className="flex justify-between items-end text-[18px] font-bold text-green-500 mt-[10px] uppercase">
                                 <h2>Product</h2>
                                 <h2>Total</h2>
                               </div>
@@ -181,7 +186,7 @@ console.log("cart==>", cart)
                               {/* <div className="flex justify-between"> */}
                               <div className="flex flex-col gap-3 mt-[10px]">
                                 {cart.map((item, index) => (
-                                  <div className="flex justify-between">
+                                  <div className="flex justify-between w-full ">
                                     <div className="flex gap-5">
                                       <img
                                         src={item.image1}
@@ -193,7 +198,7 @@ console.log("cart==>", cart)
                                           {item.name}
                                         </h4>
                                         <h4 className="text-[15px]">
-                                          $ {item.price}.00 USD
+                                           {item.price}.00 UGX
                                         </h4>
                                         <h4 className="text-[15px]">
                                           Color: Pink
@@ -221,9 +226,10 @@ console.log("cart==>", cart)
                                         </div>
                                       </div>
                                     </div>
-                                    <div>
-                                      <h4 className="text-[18px]">
-                                        $ {item.price * item.qty} USD
+
+                                    <div className="">
+                                      <h4 className="text-[18px] text-end ">
+                                        {item.price * item.qty} UGX
                                       </h4>
                                     </div>
                                   </div>
@@ -243,12 +249,9 @@ console.log("cart==>", cart)
                                 <h4>Subtotal</h4>
                                 <h4>$ {totalPrice} USD</h4>
                               </div>
-                              <h1>
-                                Taxes and shipping calculated at
-                                checkout
-                              </h1>
+                              
                               <Link to="/checkout">
-                              <button className="w-full bg-[#1948c9] text-white mt-[10px] p-3 text-[20px] rounded-full">
+                              <button className="w-full bg-black hover:bg-green-600 duration-500 text-white mt-[10px] p-3 text-[20px] rounded-full">
                                 Checkout
                               </button>
                               </Link>

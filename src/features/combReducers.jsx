@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 import authReducer from "./auth/authSlice"
 import cartReducer from "./cart/cartSlice"
 // import storeReducer from './shop'
-// import productsReducer from './productsSlice'
+import productsReducer from './products/productSlice'
 // import searchReducer from './searchSlice'
 // import currencyReducer from './currencySlice';
 
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
     users:authReducer,
     cart:cartReducer,
     // store:storeReducer,
-    // products:productsReducer,
+    products:productsReducer,
     // search:searchReducer,
     // currency:currencyReducer
 })
