@@ -222,7 +222,7 @@ const Smain = () => {
           <li
             onClick={prevPage}
             className={
-              "bg-black w-[40px] h-[40px] text-white text-[30px] flex justify-center items-center hover:bg-[#ffaf9b] duration-500"
+              "bg-black w-[40px] h-[40px] text-white text-[30px] flex justify-center items-center hover:bg-green-300 duration-500"
             }
           >
             <MdKeyboardArrowLeft />
