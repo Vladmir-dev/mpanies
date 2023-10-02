@@ -11,6 +11,9 @@ import {
   AiFillFacebook,
   AiOutlineInstagram,
 } from "react-icons/ai";
+import {MdOutlineRemoveShoppingCart} from 'react-icons/md'
+import {useSelector, useDispatch} from 'react-redux'
+import { add_to_cart, decrease_qty} from '../features/cart/cartActions'
 
 const Navbar = () => {
   const links = [
@@ -45,7 +48,17 @@ const Navbar = () => {
       window.removeEventListener("scroll", () => {});
     };
   }, []);
-const bg = "[#A5D6A6]"
+
+// const bg = "[#A5D6A6]"
+const dispatch = useDispatch()
+const cart = useSelector((state) => state.cart.cartItems)
+console.log("cart==>", cart)
+
+  const totalPrice = cart.reduce(
+    (price, item) => price + item.qty * item.price,
+    0,
+  );
+
   return (
     <div
       className={
@@ -118,7 +131,7 @@ const bg = "[#A5D6A6]"
           <div>
             <button onClick={() => setShowCart(!showCart)}>
               <div className="bg-green-400 text-[10px] px-2 absolute mt-[-13px] ml-[11px] rounded-full">
-                0
+                {cart.length}
               </div>
               <FaCartPlus className="hover:text-green-400" />
             </button>
@@ -136,7 +149,113 @@ const bg = "[#A5D6A6]"
                 </div>
                 <hr />
                 <div>
-                  <div></div>
+                  {cart.length <= 0 ? (
+                          <div className="flex flex-col h-[100vh]  justify-around items-center">
+                            <div className="flex flex-col gap-8">
+                              <h1 className="text-[25px]">
+                                Your cart is empty
+                              </h1>
+                             
+                              <button onClick={() => setOpenCart(!openCart)} className="w-auto px-4 text-[17px] bg-blue-900 text-white rounded-full py-3 hover:bg-indigo-900">
+                                Continue Shopping
+                              </button>
+                             
+                            </div>
+                            <div className="p-2  w-[367px] h-[300px] flex flex-col justfiy-center items-center text-[17px]">
+                              <MdOutlineRemoveShoppingCart />
+
+                              <h4 className="flex gap-3 justify-center items-center">
+                                Kids
+                                
+                              </h4>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="flex flex-col justify-between h-[90vh]">
+                            <div>
+                              <div className="flex justify-between items-end text-[18px] font-bold text-[#1948c9] mt-[10px] uppercase">
+                                <h2>Product</h2>
+                                <h2>Total</h2>
+                              </div>
+
+                              {/* <div className="flex justify-between"> */}
+                              <div className="flex flex-col gap-3 mt-[10px]">
+                                {cart.map((item, index) => (
+                                  <div className="flex justify-between">
+                                    <div className="flex gap-5">
+                                      <img
+                                        src={item.image1}
+                                        alt={`cart item ${index}`}
+                                        className="w-[120px] h-[120px]"
+                                      />
+                                      <div className="flex flex-col gap-2">
+                                        <h4 className="font-bold text-[15px]">
+                                          {item.name}
+                                        </h4>
+                                        <h4 className="text-[15px]">
+                                          $ {item.price}.00 USD
+                                        </h4>
+                                        <h4 className="text-[15px]">
+                                          Color: Pink
+                                        </h4>
+                                        <div className="flex mt-[10px] justify-between items-center py-2 px-4 gap-5 w-[120px] rounded-full text-[18px] border-solid border-[1px] border-black">
+                                          <button
+                                            onClick={() =>
+                                              dispatch(
+                                                decrease_qty(item),
+                                              )
+                                            }
+                                          >
+                                            -
+                                          </button>
+                                          <h4>{item.qty}</h4>
+                                          <button
+                                            onClick={() =>
+                                              dispatch(
+                                                add_to_cart(item)
+                                              )
+                                            }
+                                          >
+                                            +
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <h4 className="text-[18px]">
+                                        $ {item.price * item.qty} USD
+                                      </h4>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                              {/* <div>
+                                <h4 className="text-[18px]">
+                                  $ {totalPrice} USD
+                                </h4>
+                              </div>
+                            </div> */}
+                            </div>
+
+                            <div className="w-[100%]">
+                              <hr className="border-[1px] bg-gray-500" />
+                              <div className="flex justify-between  w-[100%] py-4 text-[20px]">
+                                <h4>Subtotal</h4>
+                                <h4>$ {totalPrice} USD</h4>
+                              </div>
+                              <h1>
+                                Taxes and shipping calculated at
+                                checkout
+                              </h1>
+                              <Link to="/checkout">
+                              <button className="w-full bg-[#1948c9] text-white mt-[10px] p-3 text-[20px] rounded-full">
+                                Checkout
+                              </button>
+                              </Link>
+                              
+                            </div>
+                          </div>
+                        )}
                 </div>
               </div>
             )}

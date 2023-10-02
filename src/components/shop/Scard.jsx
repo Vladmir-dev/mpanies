@@ -3,9 +3,14 @@ import image5 from "../../assets/shop-new-23.jpg";
 import { FaCartPlus } from "react-icons/fa";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { add_to_cart } from '../../features/cart/cartActions'
 
 const Scard = ({ item }) => {
   const [show, setShow] = useState(false);
+
+   const dispatch = useDispatch()
+
   return (
     <div
       onMouseEnter={() => setShow(true)}
@@ -17,7 +22,9 @@ const Scard = ({ item }) => {
         {/* {show && ( */}
         <div className="hidden group-hover:block duration-500">
           <div className="bg-red-500 flex  justify-center items-center md:mt-[-200px] mt-[-200px] md:gap-8 gap-5 duration-500">
-            <button className="p-2 rounded-md bg-white hover:bg-black hover:text-white duration-500">
+            <button
+              onClick={() => dispatch(add_to_cart(item))}
+             className="p-2 rounded-md bg-white hover:bg-black hover:text-white duration-500">
               <FaCartPlus />
             </button>
             <button className="p-2 bg-white rounded-md hover:bg-black hover:text-white duration-500">
