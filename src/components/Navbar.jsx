@@ -11,10 +11,10 @@ import {
   AiFillFacebook,
   AiOutlineInstagram,
 } from "react-icons/ai";
-import {MdOutlineRemoveShoppingCart} from 'react-icons/md'
-import {useSelector, useDispatch} from 'react-redux'
-import { add_to_cart, decrease_qty} from '../features/cart/cartActions'
-import { AllProducts } from '../features/products/productActions'
+import { MdOutlineRemoveShoppingCart } from "react-icons/md";
+import { useSelector, useDispatch } from "react-redux";
+import { add_to_cart, decrease_qty } from "../features/cart/cartActions";
+import { AllProducts } from "../features/products/productActions";
 
 const Navbar = () => {
   const links = [
@@ -35,8 +35,9 @@ const Navbar = () => {
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
   const [showCart, setShowCart] = useState(false);
+  const [showDrop, setShowDrop] = useState(false);
   const [search, setSearch] = useState(false);
-  const token = "h3oih32oih'pricei"
+  const token = "h3oih32oih'pricei";
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 10) {
@@ -50,22 +51,19 @@ const Navbar = () => {
     };
   }, []);
 
-
-
-
-// const bg = "[#A5D6A6]"
-const dispatch = useDispatch()
-const cart = useSelector((state) => state.cart.cartItems)
-console.log("cart==>", cart)
+  // const bg = "[#A5D6A6]"
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.cartItems);
+  console.log("cart==>", cart);
 
   const totalPrice = cart.reduce(
     (price, item) => price + item.qty * item.price,
     0,
   );
 
-useEffect(() => {
-  dispatch(AllProducts(token))
-}, [dispatch, token])
+  useEffect(() => {
+    dispatch(AllProducts(token));
+  }, [dispatch, token]);
 
   return (
     <div
@@ -88,10 +86,9 @@ useEffect(() => {
 
         <Link to="/">
           <div>
-          <img src={logo} alt="logo" className="w-[120px]" />
-        </div>
+            <img src={logo} alt="logo" className="w-[120px]" />
+          </div>
         </Link>
-        
 
         {/* <div className="hidden md:block"> */}
         <div
@@ -134,8 +131,23 @@ useEffect(() => {
         {/* </div> */}
 
         <div className="flex gap-8 text-[24px]">
-          <BsPersonFill className="hidden md:block hover:text-green-500" />
+          <div>
+            <BsPersonFill onClick={() => setShowDrop(!showDrop)} className="hidden md:block hover:text-green-500" />
 
+            {showDrop && (
+              <div className="bg-white absolute shadow-md px-4 pt-4 pb-[15px] mt-[10px] rounded-md ml-[-80px] w-[250px]">
+                <div>
+                  <button className="bg-black hover:bg-green-600 duration-500 text-white w-full text-[20px] rounded-md py-[5px]">
+                    Sign In
+                  </button>
+                  <div className="mt-[10px] text-[18px] flex justify-center items-center gap-2">
+                    <h4 className="text-[17px]">New to Mpanies ?</h4>
+                    <h4 className="text-blue-500">Sign Up</h4>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
           <div>
             <button onClick={() => setShowCart(!showCart)}>
               <div className="bg-green-400 text-[10px] px-2 absolute mt-[-13px] ml-[11px] rounded-full">
@@ -151,114 +163,106 @@ useEffect(() => {
                     <AiOutlineClose className="text-[27px]" />
                   </button>
                 </div>
-               
+
                 <hr />
                 <div>
                   {cart.length <= 0 ? (
-                          <div className="flex flex-col h-[100vh]  justify-around items-center">
-                            <div className="flex flex-col gap-8">
-                              <h1 className="text-[25px]">
-                                Your cart is empty
-                              </h1>
-                             
-                              <button onClick={() => setOpenCart(!openCart)} className="w-auto px-4 text-[17px] bg-blue-900 text-white rounded-full py-3 hover:bg-indigo-900">
-                                Continue Shopping
-                              </button>
-                             
-                            </div>
-                            <div className="p-2  w-[367px] h-[300px] flex flex-col justfiy-center items-center text-[17px]">
-                              <MdOutlineRemoveShoppingCart />
+                    <div className="flex flex-col h-[100vh]  justify-around items-center">
+                      <div className="flex flex-col gap-8">
+                        <h1 className="text-[25px]">Your cart is empty</h1>
 
-                              <h4 className="flex gap-3 justify-center items-center">
-                                Kids
-                                
-                              </h4>
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="flex flex-col justify-between h-[90vh]">
-                            <div>
-                              <div className="flex justify-between items-end text-[18px] font-bold text-green-500 mt-[10px] uppercase">
-                                <h2>Product</h2>
-                                <h2>Total</h2>
-                              </div>
+                        <button
+                          onClick={() => setOpenCart(!openCart)}
+                          className="w-auto px-4 text-[17px] bg-blue-900 text-white rounded-full py-3 hover:bg-indigo-900"
+                        >
+                          Continue Shopping
+                        </button>
+                      </div>
+                      <div className="p-2  w-[367px] h-[300px] flex flex-col justfiy-center items-center text-[17px]">
+                        <MdOutlineRemoveShoppingCart />
 
-                              {/* <div className="flex justify-between"> */}
-                              <div className="flex flex-col gap-3 mt-[10px]">
-                                {cart.map((item, index) => (
-                                  <div className="flex justify-between w-full ">
-                                    <div className="flex gap-5">
-                                      <img
-                                        src={item.image1}
-                                        alt={`cart item ${index}`}
-                                        className="w-[120px] h-[120px]"
-                                      />
-                                      <div className="flex flex-col gap-2">
-                                        <h4 className="font-bold text-[15px]">
-                                          {item.name}
-                                        </h4>
-                                        <h4 className="text-[15px]">
-                                           {item.price}.00 UGX
-                                        </h4>
-                                        <h4 className="text-[15px]">
-                                          Color: Pink
-                                        </h4>
-                                        <div className="flex mt-[10px] justify-between items-center py-2 px-4 gap-5 w-[120px] rounded-full text-[18px] border-solid border-[1px] border-black">
-                                          <button
-                                            onClick={() =>
-                                              dispatch(
-                                                decrease_qty(item),
-                                              )
-                                            }
-                                          >
-                                            -
-                                          </button>
-                                          <h4>{item.qty}</h4>
-                                          <button
-                                            onClick={() =>
-                                              dispatch(
-                                                add_to_cart(item)
-                                              )
-                                            }
-                                          >
-                                            +
-                                          </button>
-                                        </div>
-                                      </div>
-                                    </div>
+                        <h4 className="flex gap-3 justify-center items-center">
+                          Kids
+                        </h4>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col justify-between h-[90vh]">
+                      <div>
+                        <div className="flex justify-between items-end text-[18px] font-bold text-green-500 mt-[10px] uppercase">
+                          <h2>Product</h2>
+                          <h2>Total</h2>
+                        </div>
 
-                                    <div className="">
-                                      <h4 className="text-[18px] text-end ">
-                                        {item.price * item.qty} UGX
-                                      </h4>
-                                    </div>
+                        {/* <div className="flex justify-between"> */}
+                        <div className="flex flex-col gap-3 mt-[10px]">
+                          {cart.map((item, index) => (
+                            <div className="flex justify-between w-full ">
+                              <div className="flex gap-5">
+                                <img
+                                  src={item.image1}
+                                  alt={`cart item ${index}`}
+                                  className="w-[120px] h-[120px]"
+                                />
+                                <div className="flex flex-col gap-2">
+                                  <h4 className="font-bold text-[15px]">
+                                    {item.name}
+                                  </h4>
+                                  <h4 className="text-[15px]">
+                                    {item.price}.00 UGX
+                                  </h4>
+                                  <h4 className="text-[15px]">Color: Pink</h4>
+                                  <div className="flex mt-[10px] justify-between items-center py-2 px-4 gap-5 w-[120px] rounded-full text-[18px] border-solid border-[1px] border-black">
+                                    <button
+                                      onClick={() =>
+                                        dispatch(decrease_qty(item))
+                                      }
+                                    >
+                                      -
+                                    </button>
+                                    <h4>{item.qty}</h4>
+                                    <button
+                                      onClick={() =>
+                                        dispatch(add_to_cart(item))
+                                      }
+                                    >
+                                      +
+                                    </button>
                                   </div>
-                                ))}
+                                </div>
                               </div>
-                              {/* <div>
+
+                              <div className="">
+                                <h4 className="text-[18px] text-end ">
+                                  {item.price * item.qty} UGX
+                                </h4>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        {/* <div>
                                 <h4 className="text-[18px]">
                                   $ {totalPrice} USD
                                 </h4>
                               </div>
                             </div> */}
-                            </div>
+                      </div>
 
-                            <div className="w-[100%]">
-                              <hr className="border-[1px] bg-gray-500" />
-                              <div className="flex justify-between  w-[100%] py-4 text-[20px]">
-                                <h4>Subtotal</h4>
-                                <h4>$ {totalPrice} USD</h4>
-                              </div>
-                              
-                              <Link to="/checkout">
-                              <button className="w-full bg-black hover:bg-green-600 duration-500 text-white mt-[10px] p-3 text-[20px] rounded-full">
-                                Checkout
-                              </button>
-                              </Link>
-                              
-                            </div>
-                          </div>
-                        )}
+                      <div className="w-[100%]">
+                        <hr className="border-[1px] bg-gray-500" />
+                        <div className="flex justify-between  w-[100%] py-4 text-[20px]">
+                          <h4>Subtotal</h4>
+                          <h4>$ {totalPrice} USD</h4>
+                        </div>
+
+                        <Link to="/checkout">
+                          <button className="w-full bg-black hover:bg-green-600 duration-500 text-white mt-[10px] p-3 text-[20px] rounded-full">
+                            Checkout
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
