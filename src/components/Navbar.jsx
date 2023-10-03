@@ -21,14 +21,87 @@ const Navbar = () => {
     {
       name: "Home",
       link: "/",
+      submenu: false,
     },
     {
       name: "Shop",
       link: "/shop",
+      submenu: true,
+      subitems: [
+        {
+          name: "New In",
+          headitems: [
+            {
+              name: "Acne Cream",
+            },
+            {
+              name: "Ale Lotion",
+            },
+            {
+              name: "Fairnes",
+            },
+            {
+              name: "Whitening",
+            },
+          ],
+        },
+        {
+          name: "Cosmetics",
+          headitems: [
+            {
+              name: "Acne Cream",
+            },
+            {
+              name: "Ale Lotion",
+            },
+            {
+              name: "Fairnes",
+            },
+            {
+              name: "Whitening",
+            },
+          ],
+        },
+        {
+          name: "Skin",
+          headitems: [
+            {
+              name: "Acne Cream",
+            },
+            {
+              name: "Ale Lotion",
+            },
+            {
+              name: "Fairnes",
+            },
+            {
+              name: "Whitening",
+            },
+          ],
+        },
+        {
+          name: "Make Up",
+          headitems: [
+            {
+              name: "Acne Cream",
+            },
+            {
+              name: "Ale Lotion",
+            },
+            {
+              name: "Fairnes",
+            },
+            {
+              name: "Whitening",
+            },
+          ],
+        },
+      ],
     },
     {
       name: "About",
       link: "/about",
+      submenu: false,
     },
   ];
 
@@ -37,7 +110,9 @@ const Navbar = () => {
   const [showCart, setShowCart] = useState(false);
   const [showDrop, setShowDrop] = useState(false);
   const [search, setSearch] = useState(false);
+  const [drop, setDrop] = useState("");
   const token = "h3oih32oih'pricei";
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 10) {
@@ -99,13 +174,38 @@ const Navbar = () => {
           }
         >
           {links.map((item, index) => (
-            <Link
-              to={item.link}
+            <div
               key={index}
-              className="hover:text-green-500 duration-500"
+              onMouseEnter={() => setDrop(index)}
+              onMouseLeave={() => setDrop("")}
             >
-              <li>{item.name}</li>
-            </Link>
+              <Link
+                to={item.link}
+                className="hover:text-green-500 duration-500"
+              >
+                <li>{item.name}</li>
+              </Link>
+              {drop === index && (
+                <div className="absolute bg-white w-[60%] p-4 ml-[-500px] rounded-md shadow-md">
+                  {item.submenu ? (
+                    <div className="flex justify-evenly">
+                      {item.subitems.map((ele, index) => (
+                        <div className="">
+                          <h4 className="font-bold underline">{ele.name}</h4>
+                          <div className="flex flex-col gap-3 mt-[10px]">
+                            {ele.headitems.map((sitem, index) => (
+                              <h4 className="text-[18px]">{sitem.name}</h4>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
+                </div>
+              )}
+            </div>
           ))}
           <div className="md:hidden mt-[50px]">
             <div className="flex flex-col justify-start items-start gap-5">
@@ -132,20 +232,23 @@ const Navbar = () => {
 
         <div className="flex gap-8 text-[24px]">
           <div>
-            <BsPersonFill onClick={() => setShowDrop(!showDrop)} className="hidden md:block hover:text-green-500" />
+            <BsPersonFill
+              onClick={() => setShowDrop(!showDrop)}
+              className="hidden md:block hover:text-green-500"
+            />
 
             {showDrop && (
               <div className="bg-white absolute shadow-md px-4 pt-4 pb-[15px] mt-[10px] rounded-md ml-[-80px] w-[250px]">
                 <div>
-                <Link to="/login">
-                  <button className="bg-black hover:bg-green-600 duration-500 text-white w-full text-[20px] rounded-md py-[5px]">
-                    Sign In
-                  </button>
-                </Link>
+                  <Link to="/login">
+                    <button className="bg-black hover:bg-green-600 duration-500 text-white w-full text-[20px] rounded-md py-[5px]">
+                      Sign In
+                    </button>
+                  </Link>
                   <div className="mt-[10px] text-[18px] flex justify-center items-center gap-2">
                     <h4 className="text-[17px]">New to Mpanies ?</h4>
                     <Link to="/signup">
-                    <h4 className="text-blue-500">Sign Up</h4>
+                      <h4 className="text-blue-500">Sign Up</h4>
                     </Link>
                   </div>
                 </div>
@@ -177,17 +280,10 @@ const Navbar = () => {
 
                         <button
                           onClick={() => setOpenCart(!openCart)}
-                          className="w-auto px-4 text-[17px] bg-blue-900 text-white rounded-full py-3 hover:bg-indigo-900"
+                          className="w-auto px-4 text-[17px] bg-black text-white rounded-md py-3 hover:bg-green-600"
                         >
                           Continue Shopping
                         </button>
-                      </div>
-                      <div className="p-2  w-[367px] h-[300px] flex flex-col justfiy-center items-center text-[17px]">
-                        <MdOutlineRemoveShoppingCart />
-
-                        <h4 className="flex gap-3 justify-center items-center">
-                          Kids
-                        </h4>
                       </div>
                     </div>
                   ) : (
@@ -216,7 +312,7 @@ const Navbar = () => {
                                     {item.price}.00 UGX
                                   </h4>
                                   <h4 className="text-[15px]">Color: Pink</h4>
-                                  <div className="flex mt-[10px] justify-between items-center py-2 px-4 gap-5 w-[120px] rounded-full text-[18px] border-solid border-[1px] border-black">
+                                  <div className="flex mt-[10px] justify-between items-center py-2 px-4 gap-5 w-[120px]  text-[18px] border-solid border-[1px] border-black">
                                     <button
                                       onClick={() =>
                                         dispatch(decrease_qty(item))
@@ -258,9 +354,13 @@ const Navbar = () => {
                           <h4>Subtotal</h4>
                           <h4>$ {totalPrice} USD</h4>
                         </div>
-
                         <Link to="/checkout">
-                          <button className="w-full bg-black hover:bg-green-600 duration-500 text-white mt-[10px] p-3 text-[20px] rounded-full">
+                          <button className="w-full bg-black hover:bg-green-600 duration-500 text-white mt-[10px] p-3 text-[20px] ">
+                            View Cart
+                          </button>
+                        </Link>
+                        <Link to="/checkout">
+                          <button className="w-full bg-black hover:bg-green-600 duration-500 text-white mt-[10px] p-3 text-[20px] ">
                             Checkout
                           </button>
                         </Link>
