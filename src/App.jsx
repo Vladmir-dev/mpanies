@@ -8,6 +8,10 @@ import store from './features/store'
 import { PersistGate } from "redux-persist/integration/react"
 import { persistedStore } from "./features/store"
 import { Provider } from "react-redux"
+import Login from './pages/Login'
+import SignUp from './pages/SignUp'
+import Otp from './pages/Otp'
+
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -21,6 +25,9 @@ function App() {
         <Route exact path="/" element={<Home />}/>
         <Route path="/shop" element={<ShopPage />}/>
         <Route path="/about" element={<About />}/>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/signUp" element={<SignUp />}/>
+        <Route path="/otp" element={<Otp />}/>
       </Routes>
       </BrowserRouter>
       </PersistGate>
