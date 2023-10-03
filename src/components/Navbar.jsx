@@ -137,12 +137,16 @@ const Navbar = () => {
             {showDrop && (
               <div className="bg-white absolute shadow-md px-4 pt-4 pb-[15px] mt-[10px] rounded-md ml-[-80px] w-[250px]">
                 <div>
+                <Link to="/login">
                   <button className="bg-black hover:bg-green-600 duration-500 text-white w-full text-[20px] rounded-md py-[5px]">
                     Sign In
                   </button>
+                </Link>
                   <div className="mt-[10px] text-[18px] flex justify-center items-center gap-2">
                     <h4 className="text-[17px]">New to Mpanies ?</h4>
+                    <Link to="/signup">
                     <h4 className="text-blue-500">Sign Up</h4>
+                    </Link>
                   </div>
                 </div>
               </div>
