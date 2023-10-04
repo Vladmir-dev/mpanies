@@ -9,25 +9,32 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useSelector, useDispatch } from "react-redux";
 import { add_to_cart, decrease_qty } from "../features/cart/cartActions";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
 	const cart = useSelector((state) => state.cart.cartItems);
 	const dispatch = useDispatch();
+
+	const totalPrice = cart.reduce(
+		(price, item) => price + item.qty * item.price,
+		0,
+	);
+
 	return (
 		<div className="mt-[100px] mb-[50px]">
 			<TableContainer component={Paper} className="table">
-				<Table sx={{ minWidth: 1200 }} aria-label="simple table">
+				<Table sx={{ minWidth: 500 }} aria-label="simple table">
 					<TableHead>
 						<TableRow>
 							<TableCell>
-								<h1 className="text-[30px]">Product</h1>
+								<h1 className="md:text-[30px]">Product</h1>
 							</TableCell>
 							<TableCell>
-								<h1 className="text-[30px]">Quantity</h1>
+								<h1 className="md:text-[30px]">Quantity</h1>
 							</TableCell>
 
 							<TableCell className="text-[30px]">
-								<h1 className="text-[30px]">Total</h1>
+								<h1 className="md:text-[30px]">Total</h1>
 							</TableCell>
 						</TableRow>
 					</TableHead>
@@ -71,7 +78,7 @@ const Cart = () => {
 											</button>
 										</div>
 									</TableCell>
-									<TableCell className="min-w-[100px]">
+									<TableCell className="md:min-w-[100px]">
 										<h1 className="mt-[-100px]">
 											UGX {item.price * item.qty}
 										</h1>
@@ -81,7 +88,23 @@ const Cart = () => {
 					</TableBody>
 				</Table>
 			</TableContainer>
-			<div>hello</div>
+			<div className="flex md:flex-row flex-col md:justify-between justify-center items-center gap-8 mt-[100px]">
+				<div className="flex flex-col ">
+					<label>Order Special Instructions</label>
+					<textarea className="border-solid w-[300px] h-[150px] border-[1px] border-black" />
+				</div>
+				<div className="flex flex-col md:justify-end md:items-end">
+					<div className="flex gap-10 text-[19px]">
+						<h2>Subtotal</h2>
+						<h2 className="font-bold">UGX {totalPrice}</h2>
+					</div>
+					<Link to="/checkout">
+						<button className="w-[250px] bg-black hover:bg-green-600 duration-500 text-white mt-[10px] p-3 text-[20px] ">
+							Checkout
+						</button>
+					</Link>
+				</div>
+			</div>
 		</div>
 	);
 };
