@@ -354,7 +354,7 @@ const Navbar = () => {
                           <h4>Subtotal</h4>
                           <h4>$ {totalPrice} USD</h4>
                         </div>
-                        <Link to="/checkout">
+                        <Link to="/cart">
                           <button className="w-full bg-black hover:bg-green-600 duration-500 text-white mt-[10px] p-3 text-[20px] ">
                             View Cart
                           </button>
