@@ -1,0 +1,44 @@
+/* Cart.css */
+.cart {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-headings {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc; /* Add a bottom border to separate headings */
+}
+
+.cart-heading {
+  flex-basis: calc(33.33% - 20px); /* Adjust the width as needed */
+  text-align: center;
+}
+
+.divider {
+  border-top: 1px solid #ccc;
+  margin-top: 20px;
+}
+
+.cart-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Vertically align content with headers */
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc; /* Add a bottom border to separate content */
+}
+
+.cart-item {
+  flex-basis: calc(33.33% - 20px); /* Adjust the width as needed */
+  text-align: center;
+}
+
+.cart-content:last-child {
+  border-bottom: none; /* Remove the border from the last content row */
+}
