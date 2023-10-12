@@ -47,8 +47,9 @@ const authSlice = createSlice({
     builder.addCase(signup.fulfilled, (state, action) => {
       state.isLoading = false;
       console.log("action payload", action.payload)
+      alert('User created sussessfully')
       state.message = action.payload;
-      // window.location.href = "/";
+      window.location.href = "/login";
     });
 
     builder.addCase(signup.rejected, (state, action) => {

@@ -96,9 +96,8 @@ export const signup = createAsyncThunk(
     try {
       console.log("details in try==>", signupDetails);
       const res = await axios.post(
-        `${baseurl}/auth/register`,
+        `${baseurl}/register/`,
         signupDetails,
-        Config
       );
       // console.log("beginiing...");
       console.log("response =======>", res.data);

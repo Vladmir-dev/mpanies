@@ -44,7 +44,7 @@ const Login = () => {
 						<div className="flex flex-col">
 							<label>Password</label>
 							<input
-								type="text"
+								type="password"
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
 								className="md:max-w-[450px] md:w-[400px] p-2 border-solid border-[2px] rounded-xl border-black/20"
