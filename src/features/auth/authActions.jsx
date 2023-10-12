@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-// import {domain, localdomain} from '../../common/helpers/helper'
+import { baseurl } from "../../utils";
 
 
 export const otp = createAsyncThunk(
@@ -40,15 +40,14 @@ export const login = createAsyncThunk(
       console.log("login details ===>", loginDetails);
       // const response = await axios.post("https://kenagecollapi.onrender.com​/api/auth/login", loginDetails, Config)
       const response = await axios.post(
-        `${baseurl}/auth/login`,
+        `${baseurl}/login/`,
         loginDetails,
-        Config
       );
       //  navigate("/")
-      console.log("response =====>", response.data);
+      console.log("response =====>", response);
       return response.data;
     } catch (error) {
-      console.log("This is the error ===>", error.response.data.error.message);
+      console.log("This is the error ===>", error);
       if (error.response && error.response.data.error.message) {
         // console.log("This is the error ===>", error);
         // dispatch(setError("Incorrect credentials"));

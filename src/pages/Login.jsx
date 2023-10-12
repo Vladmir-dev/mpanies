@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/mpanies1.png";
 import { Link } from "react-router-dom";
+import { login } from "../features/auth/authActions";
+import { useSelector, useDispatch } from "react-redux";
 
 const Login = () => {
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+
+	const dispatch = useDispatch()
+	const loading = useSelector((state) => state.users.isLoading)
+
+	const handleLogin = () => {
+		if (password === '' || email === ''){
+			alert('passwrd or email is empty')
+		}else{
+			console.log(email);
+			console.log(password);
+			dispatch(login({email:email, password:password}))
+			setEmail('')
+			setPassword('')
+		}
+	}
+
 	return (
 		<div className="flex justify-center items-center w-full h-[100vh] bg-green-200">
 			<div className="bg-white/80 shadow-md backdrop-blur-md rounded-md md:w-[30%] p-4">
@@ -16,6 +36,8 @@ const Login = () => {
 							<label>Email</label>
 							<input
 								type="text"
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
 								className="md:max-w-[450px] md:w-[400px] p-2 border-solid border-[2px] rounded-xl border-black/20"
 							/>
 						</div>
@@ -23,12 +45,15 @@ const Login = () => {
 							<label>Password</label>
 							<input
 								type="text"
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
 								className="md:max-w-[450px] md:w-[400px] p-2 border-solid border-[2px] rounded-xl border-black/20"
 							/>
 						</div>
 
-						<button className="bg-black text-white md:max-w-[450px] md:w-[400px] py-3 rounded-md hover:bg-green-600 duration-500">
-							Sign In
+						<button onClick={handleLogin} className="bg-black text-white md:max-w-[450px] md:w-[400px] py-3 rounded-md hover:bg-green-600 duration-500">
+							{loading ? "Loading..." :"Sign In "}
+							
 						</button>
 						<div className="flex gap-4">
 							<h4>Don't Have An Account ?</h4>
