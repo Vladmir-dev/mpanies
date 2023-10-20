@@ -91,7 +91,9 @@ const Checkout = () => {
             </button>
           </div>
         </div>
+		<div className="border-solid border-[1px] border-black h-[90vh] mt-[100px]">
 
+		</div>
         <div className="flex-[0.5]  h-[100vh] px-5">
           <div className="mt-[100px] flex flex-col gap-3">
             {cart.map((item, index) => (
