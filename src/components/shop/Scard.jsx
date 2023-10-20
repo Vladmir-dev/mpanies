@@ -18,7 +18,7 @@ const Scard = ({ item }) => {
       className="m-2 bg-white md:max-w-[260px] md:w-[250px] w-[200px] "
     >
       <div className="w-full h-[400px] md:max-h-[410px] md:h-[400px] h-[200px] group">
-        <img src={image5} alt="product" className="w-full h-full cover" />
+        <img src={item.image} alt="product" className="w-full h-full cover" />
         {/* {show && ( */}
         <div className="hidden group-hover:block duration-500">
           <div className="bg-red-500 flex  justify-center items-center md:mt-[-200px] mt-[-200px] md:gap-8 gap-5 duration-500">

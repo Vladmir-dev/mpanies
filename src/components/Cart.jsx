@@ -46,7 +46,7 @@ const Cart = () => {
 									<TableCell>
 										<div className="flex gap-8 p-2">
 											<img
-												src={item.image1}
+												src={item.image}
 												className="w-[150px]"
 											/>
 											<div className="flex flex-col gap-3">

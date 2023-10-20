@@ -300,7 +300,7 @@ const Navbar = () => {
                             <div className="flex justify-between w-full ">
                               <div className="flex gap-5">
                                 <img
-                                  src={item.image1}
+                                  src={item.image}
                                   alt={`cart item ${index}`}
                                   className="w-[120px] h-[120px]"
                                 />
