@@ -12,8 +12,8 @@ const Checkout = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex">
-        <div className=" flex-[0.5] h-[100vh] flex justify-end items-start px-6">
+      <div className="flex md:flex-row flex-col">
+        <div className=" flex-[0.5] h-[100vh] flex md:justify-end md:items-start px-6">
           <div className="mt-[100px] flex flex-col gap-10">
             <div className="flex flex-col w-[90%]">
               <label className="text-[30px]">Contact</label>
@@ -91,9 +91,7 @@ const Checkout = () => {
             </button>
           </div>
         </div>
-		<div className="border-solid border-[1px] border-black h-[90vh] mt-[100px]">
-
-		</div>
+        <div className="border-solid border-[1px] border-black h-[90vh] mt-[100px] hidden md:block"></div>
         <div className="flex-[0.5]  h-[100vh] px-5">
           <div className="mt-[100px] flex flex-col gap-3">
             {cart.map((item, index) => (
