@@ -2,12 +2,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { baseurl } from "../../utils";
 
-
 export const otp = createAsyncThunk(
   "auth/otp",
   async (code, { getState, rejectWithValue, dispatch }) => {
     // console.log("login details ===>", code);
-    console.log("code ===>", code)
+    console.log("code ===>", code);
     try {
       // console.log("login details ===>", code);
       // const response = await axios.post("https://kenagecollapi.onrender.com​/api/auth/login", loginDetails, Config)
@@ -29,8 +28,6 @@ export const otp = createAsyncThunk(
   }
 );
 
-
-
 export const login = createAsyncThunk(
   "auth/login",
   async (loginDetails, { getState, rejectWithValue, dispatch }) => {
@@ -39,10 +36,7 @@ export const login = createAsyncThunk(
     try {
       console.log("login details ===>", loginDetails);
       // const response = await axios.post("https://kenagecollapi.onrender.com​/api/auth/login", loginDetails, Config)
-      const response = await axios.post(
-        `${baseurl}/login/`,
-        loginDetails,
-      );
+      const response = await axios.post(`${baseurl}/login/`, loginDetails);
       //  navigate("/")
       console.log("response =====>", response);
       return response.data;
@@ -59,21 +53,17 @@ export const login = createAsyncThunk(
   }
 );
 
-
 export const get_user = createAsyncThunk(
   "auth/get_user",
   async (token, { getState, rejectWithValue, dispatch }) => {
     console.log("token ===>", token);
-    
+
     try {
       // console.log("login details ===>", token.token);
       // const response = await axios.post("https://kenagecollapi.onrender.com​/api/auth/login", loginDetails, Config)
-      const response = await axios.get(
-        `${baseurl}/auth/me`,
-        {
-          headers: { Authorization: `Bearer ${token.token}` },
-        }
-      );
+      const response = await axios.get(`${baseurl}/user`, {
+        headers: { Authorization: `Bearer ${token.access_token}` },
+      });
       //  navigate("/")
       console.log("user data ==>", response.data);
       return response.data;
@@ -88,17 +78,13 @@ export const get_user = createAsyncThunk(
   }
 );
 
-
 export const signup = createAsyncThunk(
   "auth/signup",
   async (signupDetails, { getState, rejectWithValue, dispatch }) => {
     // console.log("details ==>", signupDetails)
     try {
       console.log("details in try==>", signupDetails);
-      const res = await axios.post(
-        `${baseurl}/register/`,
-        signupDetails,
-      );
+      const res = await axios.post(`${baseurl}/register/`, signupDetails);
       // console.log("beginiing...");
       console.log("response =======>", res.data);
       // console.log("ending...");
@@ -113,7 +99,6 @@ export const signup = createAsyncThunk(
     }
   }
 );
-
 
 export const logout = async () => {
   try {

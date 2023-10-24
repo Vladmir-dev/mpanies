@@ -13,6 +13,7 @@ import SignUp from "./pages/SignUp";
 import Otp from "./pages/Otp";
 import CartPage from "./pages/CartPage";
 import Checkout from "./pages/Checkout";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -30,7 +31,10 @@ function App() {
               <Route path="/signUp" element={<SignUp />} />
               <Route path="/otp" element={<Otp />} />
               <Route path="/cart" element={<CartPage />} />
-              <Route path="/checkout" element={<Checkout />} />
+
+              <Route element={<ProtectedRoutes />}>
+                <Route path="/checkout" element={<Checkout />} />
+              </Route>
             </Routes>
           </BrowserRouter>
         </PersistGate>

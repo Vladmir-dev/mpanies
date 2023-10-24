@@ -14,6 +14,7 @@ import {
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { add_to_cart, decrease_qty } from "../features/cart/cartActions";
+import { get_user } from "../features/auth/authActions";
 import { AllProducts } from "../features/products/productActions";
 
 const Navbar = () => {
@@ -111,7 +112,7 @@ const Navbar = () => {
   const [showDrop, setShowDrop] = useState(false);
   const [search, setSearch] = useState(false);
   const [drop, setDrop] = useState("");
-  const token = "h3oih32oih'pricei";
+  const token = useSelector((state) => state.users.token);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -133,11 +134,12 @@ const Navbar = () => {
 
   const totalPrice = cart.reduce(
     (price, item) => price + item.qty * item.price,
-    0,
+    0
   );
 
   useEffect(() => {
     dispatch(AllProducts(token));
+    dispatch(get_user(token));
   }, [dispatch, token]);
 
   return (

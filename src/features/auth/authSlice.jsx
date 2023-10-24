@@ -81,7 +81,7 @@ const authSlice = createSlice({
     });
 
     builder.addCase(get_user.fulfilled, (state, action) => {
-      // console.log("slice user =>", action.payload);
+      console.log("slice user =>", action.payload);
       state.isLoading = false;
       state.currentUser = action.payload;
     });
