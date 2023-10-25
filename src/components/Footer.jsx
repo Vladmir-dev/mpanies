@@ -1,14 +1,20 @@
 import React from "react";
 import location from "../assets/vector13.svg";
 import { GiPositionMarker } from "react-icons/gi";
-import { AiOutlineClockCircle,AiOutlineTwitter,AiFillFacebook,AiOutlineInstagram } from "react-icons/ai";
+import {
+  AiOutlineClockCircle,
+  AiOutlineTwitter,
+  AiFillFacebook,
+  AiOutlineInstagram,
+} from "react-icons/ai";
 import { BsTelephoneFill } from "react-icons/bs";
 import { GrMail } from "react-icons/gr";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="h-auto relative  bg-black text-white md:p-10 flex justify-center items-center flex-col">
+    <div className="h-auto relative bottom-0 bg-black text-white md:p-10 flex justify-center items-center flex-col">
       <div className="flex md:flex-row flex-col md:justify-around justify-center w-full md:pl-0 p-[20px] items-start md:gap-0 gap-10">
         <div className="flex flex-col gap-5">
           <h1 className="text-[20px] uppercase">Store</h1>
@@ -41,10 +47,14 @@ const Footer = () => {
         <div className="flex flex-col gap-5">
           <h1 className="text-[20px] uppercase">Info</h1>
           <ul className="flex flex-col gap-2">
-            <li className="flex gap-3 justify-start items-center">
+            <Link to="/about">
               {" "}
-              <MdOutlineKeyboardArrowRight /> Contact
-            </li>
+              <li className="flex gap-3 justify-start items-center">
+                {" "}
+                <MdOutlineKeyboardArrowRight /> About Us
+              </li>{" "}
+            </Link>
+
             <li className="flex gap-3 justify-start items-center">
               <MdOutlineKeyboardArrowRight />
               Shipping & Returns
@@ -55,9 +65,15 @@ const Footer = () => {
         <div className="flex flex-col gap-5">
           <h1 className="text-[20px] uppercase">Share With Us</h1>
           <ul className="flex text-[20px] gap-2">
-            <li><AiOutlineTwitter /></li>
-            <li><AiFillFacebook /></li>
-            <li><AiOutlineInstagram /></li>
+            <li>
+              <AiOutlineTwitter />
+            </li>
+            <li>
+              <AiFillFacebook />
+            </li>
+            <li>
+              <AiOutlineInstagram />
+            </li>
           </ul>
         </div>
       </div>

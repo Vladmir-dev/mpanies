@@ -19,15 +19,15 @@ import { AllProducts } from "../features/products/productActions";
 
 const Navbar = () => {
   const links = [
+    // {
+    //   name: "Home",
+    //   link: "/",
+    //   submenu: false,
+    // },
     {
-      name: "Home",
-      link: "/",
-      submenu: false,
-    },
-    {
-      name: "Shop",
+      name: "Products",
       link: "/shop",
-      submenu: true,
+      submenu: false,
       subitems: [
         {
           name: "New In",
@@ -100,8 +100,18 @@ const Navbar = () => {
       ],
     },
     {
-      name: "About",
-      link: "/about",
+      name: "Cosmetics",
+      link: "/",
+      submenu: false,
+    },
+    {
+      name: "Skin",
+      link: "/",
+      submenu: false,
+    },
+    {
+      name: "Makeup",
+      link: "/",
       submenu: false,
     },
   ];
@@ -187,7 +197,7 @@ const Navbar = () => {
               >
                 <li>{item.name}</li>
               </Link>
-              {drop === index && (
+              {/* {drop === index && (
                 <div className="absolute bg-white w-[60%] p-4 ml-[-500px] rounded-md shadow-md">
                   {item.submenu ? (
                     <div className="flex justify-evenly">
@@ -206,7 +216,7 @@ const Navbar = () => {
                     <div></div>
                   )}
                 </div>
-              )}
+              )} */}
             </div>
           ))}
           <div className="md:hidden mt-[50px]">

@@ -1,1 +1,1 @@
-export const baseurl = "http://localhost:8000/api/v1";
+export const baseurl = "https://mpanies-api.onrender.com/api/v1";
