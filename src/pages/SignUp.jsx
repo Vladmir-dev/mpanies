@@ -10,11 +10,11 @@ const SignUp = () => {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone_number, setPhoneNumber] = useState("");
+  // const [phone_number, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setConfirmPassword] = useState("");
 
-//   console.log(phone_number.slice(1));
+  //   console.log(phone_number.slice(1));
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.users.isLoading);
 
@@ -23,7 +23,7 @@ const SignUp = () => {
       first_name === "" ||
       last_name === "" ||
       email === "" ||
-      phone_number === "" ||
+      // phone_number === "" ||
       password === "" ||
       cpassword === ""
     ) {
@@ -37,14 +37,14 @@ const SignUp = () => {
             first_name: first_name,
             last_name: last_name,
             email: email,
-            phone_number: phone_number.slice(1),
+            // phone_number: phone_number.slice(1),
             password: password,
           })
         );
         setFirstName("");
         setLastName("");
         setEmail("");
-        setPhoneNumber("");
+        // setPhoneNumber("");
         setPassword("");
         setConfirmPassword("");
       }
@@ -87,7 +87,7 @@ const SignUp = () => {
                 className="md:max-w-[450px] md:w-[400px] p-2 border-solid border-[2px] rounded-xl border-black/20"
               />
             </div>
-            <div className="flex flex-col">
+            {/* <div className="flex flex-col">
               <label>Phone Number</label>
               <PhoneInput
                 placeholder="Enter phone number"
@@ -95,13 +95,13 @@ const SignUp = () => {
                 onChange={setPhoneNumber}
                 className="md:max-w-[450px] md:w-[400px] py-4 h-[60px]"
               />
-              {/* <input
+              <input
 								type="text"
 								value={phone_number}
 								onChange={(e) => setPhoneNumber(e.target.value)}
 								className="md:max-w-[450px] md:w-[400px] p-2 border-solid border-[2px] rounded-xl border-black/20"
-							/> */}
-            </div>
+							/>
+            </div> */}
             <div className="flex flex-col">
               <label>Password</label>
               <input

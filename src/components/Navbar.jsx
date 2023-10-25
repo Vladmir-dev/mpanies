@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from "../assets/mpanies.png";
+import logo from "../assets/new_logo.png";
 import { Link } from "react-router-dom";
 import { BsPersonFill } from "react-icons/bs";
 import { FaCartPlus } from "react-icons/fa";
@@ -156,8 +156,8 @@ const Navbar = () => {
     <div
       className={
         show
-          ? "w-full bg-green-200 flex justify-center items-center fixed z-10 shadow-md"
-          : "fixed w-full  flex justify-center items-center z-10"
+          ? "w-full bg-green-200 flex justify-center items-center p-5 fixed z-10 shadow-md"
+          : "fixed w-full  flex justify-center items-center z-10 p-5"
       }
     >
       <div className="flex justify-between items-center w-full md:px-[50px] px-[20px]">
@@ -275,7 +275,7 @@ const Navbar = () => {
               <FaCartPlus className="hover:text-green-400" />
             </button>
             {showCart && (
-              <div className="bg-white fixed md:h-[100vh] h-[120vh] mt-[-80px] md:w-[450px] p-4 w-[300px] md:ml-[-240px] right-0  shadow-xl">
+              <div className="bg-white fixed md:h-[100vh] h-[120vh] mt-[-60px] md:w-[450px] p-4 w-[300px] md:ml-[-240px] right-0  shadow-xl">
                 <div className=" flex justify-between">
                   <h1>Your Cart</h1>
                   <button onClick={() => setShowCart(!showCart)}>
