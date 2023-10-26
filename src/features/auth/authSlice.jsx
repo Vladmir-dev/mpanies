@@ -46,15 +46,22 @@ const authSlice = createSlice({
 
     builder.addCase(signup.fulfilled, (state, action) => {
       state.isLoading = false;
-      console.log("action payload", action.payload)
-      alert('User created sussessfully')
+      console.log("action payload", action.payload);
+      if (action.payload === "user with this email already exists.") {
+        alert(action.payload);
+      } else {
+        alert("User created sussessfully");
+      }
+
       state.message = action.payload;
-      window.location.href = "/login";
+      // window.location.href = "/login";
     });
 
     builder.addCase(signup.rejected, (state, action) => {
       state.isLoading = false;
+      console.log("Error in acton ===>", action.payload);
       state.error = action.payload;
+      console.log("Error", error);
     });
 
     //otp

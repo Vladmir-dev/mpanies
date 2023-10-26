@@ -3,12 +3,15 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useSelector } from "react-redux";
 
+
 const Checkout = () => {
+  
   const cart = useSelector((state) => state.cart.cartItems);
   const totalPrice = cart.reduce(
     (price, item) => price + item.qty * item.price,
     0
   );
+  
   return (
     <div className="box-border">
       <Navbar />

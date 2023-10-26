@@ -3,8 +3,10 @@ import Navbar from "../components/Navbar";
 import breadcrumb from "../assets/breadcrumb.jpg";
 import Shop from "../components/shop/Shop";
 import Footer from "../components/Footer";
+import { useParams } from "react-router-dom";
 
 const ShopPage = () => {
+  const { id } = useParams();
   const bgImageStyle = {
     backgroundImage: ` url(${breadcrumb})`,
     backgroundPosition: "center center",
@@ -13,6 +15,7 @@ const ShopPage = () => {
     // transition: "background 0.6s ease-in-out",
     backgroundAttachment: "fixed",
   };
+  console.log("The id =====><>", id);
 
   return (
     <div>
@@ -22,7 +25,7 @@ const ShopPage = () => {
           <h1 className="uppercase text-[30px]">Collection</h1>
         </div>
       </div>
-      
+
       <Shop />
       <Footer />
     </div>

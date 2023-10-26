@@ -24,84 +24,84 @@ const Navbar = () => {
     //   link: "/",
     //   submenu: false,
     // },
-    {
-      name: "Products",
-      link: "/shop",
-      submenu: false,
-      subitems: [
-        {
-          name: "New In",
-          headitems: [
-            {
-              name: "Acne Cream",
-            },
-            {
-              name: "Ale Lotion",
-            },
-            {
-              name: "Fairnes",
-            },
-            {
-              name: "Whitening",
-            },
-          ],
-        },
-        {
-          name: "Cosmetics",
-          headitems: [
-            {
-              name: "Acne Cream",
-            },
-            {
-              name: "Ale Lotion",
-            },
-            {
-              name: "Fairnes",
-            },
-            {
-              name: "Whitening",
-            },
-          ],
-        },
-        {
-          name: "Skin",
-          headitems: [
-            {
-              name: "Acne Cream",
-            },
-            {
-              name: "Ale Lotion",
-            },
-            {
-              name: "Fairnes",
-            },
-            {
-              name: "Whitening",
-            },
-          ],
-        },
-        {
-          name: "Make Up",
-          headitems: [
-            {
-              name: "Acne Cream",
-            },
-            {
-              name: "Ale Lotion",
-            },
-            {
-              name: "Fairnes",
-            },
-            {
-              name: "Whitening",
-            },
-          ],
-        },
-      ],
-    },
+    // {
+    //   name: "Products",
+    //   link: "/shop",
+    //   submenu: false,
+    //   subitems: [
+    //     {
+    //       name: "New In",
+    //       headitems: [
+    //         {
+    //           name: "Acne Cream",
+    //         },
+    //         {
+    //           name: "Ale Lotion",
+    //         },
+    //         {
+    //           name: "Fairnes",
+    //         },
+    //         {
+    //           name: "Whitening",
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       name: "Cosmetics",
+    //       headitems: [
+    //         {
+    //           name: "Acne Cream",
+    //         },
+    //         {
+    //           name: "Ale Lotion",
+    //         },
+    //         {
+    //           name: "Fairnes",
+    //         },
+    //         {
+    //           name: "Whitening",
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       name: "Skin",
+    //       headitems: [
+    //         {
+    //           name: "Acne Cream",
+    //         },
+    //         {
+    //           name: "Ale Lotion",
+    //         },
+    //         {
+    //           name: "Fairnes",
+    //         },
+    //         {
+    //           name: "Whitening",
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       name: "Make Up",
+    //       headitems: [
+    //         {
+    //           name: "Acne Cream",
+    //         },
+    //         {
+    //           name: "Ale Lotion",
+    //         },
+    //         {
+    //           name: "Fairnes",
+    //         },
+    //         {
+    //           name: "Whitening",
+    //         },
+    //       ],
+    //     },
+    //   ],
+    // },
     {
       name: "Skin Care",
-      link: "/",
+      link: "1",
       submenu: true,
       subitems: [
         {
@@ -126,7 +126,7 @@ const Navbar = () => {
     },
     {
       name: "Makeup",
-      link: "/",
+      link: "2",
       submenu: true,
       subitems: [
         {
@@ -151,7 +151,7 @@ const Navbar = () => {
     },
     {
       name: "Hair Care",
-      link: "/",
+      link: "3",
       submenu: true,
       subitems: [
         {
@@ -176,7 +176,7 @@ const Navbar = () => {
     },
     {
       name: "Fragrances",
-      link: "/",
+      link: "4",
       submenu: true,
       subitems: [
         {
@@ -201,7 +201,7 @@ const Navbar = () => {
     },
     {
       name: "Nail Care",
-      link: "/",
+      link: "5",
       submenu: true,
       subitems: [
         {
@@ -220,7 +220,7 @@ const Navbar = () => {
     },
     {
       name: "Body & Bath",
-      link: "/",
+      link: "6",
       submenu: true,
       subitems: [
         {
@@ -245,7 +245,7 @@ const Navbar = () => {
     },
     {
       name: "Men's Grooming",
-      link: "/",
+      link: "7",
       submenu: true,
       subitems: [
         {
@@ -267,7 +267,7 @@ const Navbar = () => {
     },
     {
       name: "Organic & Natural Products",
-      link: "/",
+      link: "8",
       submenu: true,
       subitems: [
         {
@@ -343,13 +343,12 @@ const Navbar = () => {
             )}
           </button>
         </div>
-
+        
         <Link to="/">
           <div>
             <img src={logo} alt="logo" className="w-[120px]" />
           </div>
         </Link>
-
         {/* <div className="hidden md:block"> */}
         <div
           className={
@@ -365,17 +364,17 @@ const Navbar = () => {
               onMouseLeave={() => setDrop("")}
             >
               <Link
-                to={item.link}
+                to={`/category/${item.link}`}
                 className="hover:text-green-500 duration-500"
               >
                 <li>{item.name}</li>
               </Link>
               {drop === index && (
-                <div className="absolute bg-white  p-4  rounded-md shadow-md">
+                <div className="absolute   p-4  rounded-md shadow-md">
                   {item.submenu ? (
-                    <div className="flex flex-col gap-5 justify-evenly">
+                    <div className="flex bg-white p-4 flex-col gap-5 justify-evenly">
                       {item.subitems.map((ele, index) => (
-                        <div className="">
+                        <div key={index} className="">
                           <h4 className="">{ele.name}</h4>
                           {/* <div className="flex flex-col gap-3 mt-[10px]">
                             {ele.headitems.map((sitem, index) => (
@@ -414,7 +413,6 @@ const Navbar = () => {
           </div>
         </div>
         {/* </div> */}
-
         <div className="flex gap-8 text-[24px]">
           <div>
             <BsPersonFill

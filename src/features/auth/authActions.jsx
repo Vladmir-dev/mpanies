@@ -90,12 +90,16 @@ export const signup = createAsyncThunk(
       // console.log("ending...");
       return res.data;
     } catch (error) {
-      if (error.response && error.response.data.error.message) {
-        // dispatch(setError("Incorrect credentials"));
-        return rejectWithValue(error.response.data.error.message);
-      } else {
-        return rejectWithValue(error.response.data);
+      // console.log("The Error", error.response.data.email[0]);
+      if (error.response && error.response.data.email) {
+        return error.response.data.email[0];
       }
+      // if (error.response && error.response.data.error.message) {
+      //   // dispatch(setError("Incorrect credentials"));
+      //   return rejectWithValue(error.response.data.error.message);
+      // } else {
+      //   return rejectWithValue(error.response.data);
+      // }
     }
   }
 );
