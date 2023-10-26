@@ -50,7 +50,7 @@ const authSlice = createSlice({
       if (action.payload === "user with this email already exists.") {
         alert(action.payload);
       } else {
-        alert("User created sussessfully");
+        alert("Account created successfully, Check email for verification");
       }
 
       state.message = action.payload;
