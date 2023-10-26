@@ -100,19 +100,192 @@ const Navbar = () => {
       ],
     },
     {
-      name: "Cosmetics",
+      name: "Skin Care",
       link: "/",
-      submenu: false,
-    },
-    {
-      name: "Skin",
-      link: "/",
-      submenu: false,
+      submenu: true,
+      subitems: [
+        {
+          name: "Clensers",
+        },
+        {
+          name: "Moisturizers",
+        },
+        {
+          name: "Serums",
+        },
+        {
+          name: "SunScreen",
+        },
+        {
+          name: "Face Masks",
+        },
+        {
+          name: "Eye Creams",
+        },
+      ],
     },
     {
       name: "Makeup",
       link: "/",
-      submenu: false,
+      submenu: true,
+      subitems: [
+        {
+          name: "Foundation",
+        },
+        {
+          name: "Lipstick",
+        },
+        {
+          name: "EyeShadow",
+        },
+        {
+          name: "Mascara",
+        },
+        {
+          name: "Blush",
+        },
+        {
+          name: "Concealers",
+        },
+      ],
+    },
+    {
+      name: "Hair Care",
+      link: "/",
+      submenu: true,
+      subitems: [
+        {
+          name: "Shampoo",
+        },
+        {
+          name: "Conditioner",
+        },
+        {
+          name: "Hair Styling Products",
+        },
+        {
+          name: "Hair Color",
+        },
+        {
+          name: "Hair Treatments",
+        },
+        {
+          name: "Hair Accessories",
+        },
+      ],
+    },
+    {
+      name: "Fragrances",
+      link: "/",
+      submenu: true,
+      subitems: [
+        {
+          name: "Clensers",
+        },
+        {
+          name: "Moisturizers",
+        },
+        {
+          name: "Serums",
+        },
+        {
+          name: "SunScreen",
+        },
+        {
+          name: "Face Masks",
+        },
+        {
+          name: "Eye Creams",
+        },
+      ],
+    },
+    {
+      name: "Nail Care",
+      link: "/",
+      submenu: true,
+      subitems: [
+        {
+          name: "Nail Polish",
+        },
+        {
+          name: "Nail Polish Removers",
+        },
+        {
+          name: "Nail Care Kits",
+        },
+        {
+          name: "Nail Accessories",
+        },
+      ],
+    },
+    {
+      name: "Body & Bath",
+      link: "/",
+      submenu: true,
+      subitems: [
+        {
+          name: "Body Wash",
+        },
+        {
+          name: "Lotions",
+        },
+        {
+          name: "Soaps",
+        },
+        {
+          name: "Bath Bombs",
+        },
+        {
+          name: "Deodrant",
+        },
+        {
+          name: "Body Scrubs",
+        },
+      ],
+    },
+    {
+      name: "Men's Grooming",
+      link: "/",
+      submenu: true,
+      subitems: [
+        {
+          name: "Men's Skincare",
+        },
+        {
+          name: "Shaving Products",
+        },
+        {
+          name: "Beard Care",
+        },
+        {
+          name: "Men's Fragrances",
+        },
+        {
+          name: "Men's HairCare",
+        },
+      ],
+    },
+    {
+      name: "Organic & Natural Products",
+      link: "/",
+      submenu: true,
+      subitems: [
+        {
+          name: "Makeup brushes",
+        },
+        {
+          name: "Hair Styling Tools",
+        },
+        {
+          name: "Mirrors",
+        },
+        {
+          name: "Applicators",
+        },
+        {
+          name: "Sponges",
+        },
+      ],
     },
   ];
 
@@ -197,18 +370,18 @@ const Navbar = () => {
               >
                 <li>{item.name}</li>
               </Link>
-              {/* {drop === index && (
-                <div className="absolute bg-white w-[60%] p-4 ml-[-500px] rounded-md shadow-md">
+              {drop === index && (
+                <div className="absolute bg-white  p-4  rounded-md shadow-md">
                   {item.submenu ? (
-                    <div className="flex justify-evenly">
+                    <div className="flex flex-col gap-5 justify-evenly">
                       {item.subitems.map((ele, index) => (
                         <div className="">
-                          <h4 className="font-bold underline">{ele.name}</h4>
-                          <div className="flex flex-col gap-3 mt-[10px]">
+                          <h4 className="">{ele.name}</h4>
+                          {/* <div className="flex flex-col gap-3 mt-[10px]">
                             {ele.headitems.map((sitem, index) => (
                               <h4 className="text-[18px]">{sitem.name}</h4>
                             ))}
-                          </div>
+                          </div> */}
                         </div>
                       ))}
                     </div>
@@ -216,7 +389,7 @@ const Navbar = () => {
                     <div></div>
                   )}
                 </div>
-              )} */}
+              )}
             </div>
           ))}
           <div className="md:hidden mt-[50px]">
