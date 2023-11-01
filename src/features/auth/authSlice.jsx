@@ -15,6 +15,7 @@ const authSlice = createSlice({
       state.currentUser = null;
       state.error = false;
       state.token = null;
+      window.location.href = "/";
     },
   },
 
@@ -30,7 +31,7 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.token = action.payload;
       console.log("token", state.token);
-      window.location.href = "/shop";
+      window.location.href = "/";
     });
 
     builder.addCase(login.rejected, (state, action) => {

@@ -9,7 +9,6 @@ export const otp = createAsyncThunk(
     console.log("code ===>", code);
     try {
       // console.log("login details ===>", code);
-      // const response = await axios.post("https://kenagecollapi.onrender.com​/api/auth/login", loginDetails, Config)
       const response = await axios.post(
         `${baseurl}/auth/confirm/${code}`,
         Config
@@ -104,15 +103,15 @@ export const signup = createAsyncThunk(
   }
 );
 
-export const logout = async () => {
-  try {
-    return "Logout succesfull";
-  } catch (error) {
-    if (error.response && error.response.data.message) {
-      // dispatch(setError("Incorrect credentials"));
-      return rejectWithValue(error.response.data.message);
-    } else {
-      return rejectWithValue(error.response.data);
-    }
-  }
-};
+// export const logout = async () => {
+//   try {
+//     return "Logout succesfull";
+//   } catch (error) {
+//     if (error.response && error.response.data.message) {
+//       // dispatch(setError("Incorrect credentials"));
+//       return rejectWithValue(error.response.data.message);
+//     } else {
+//       return rejectWithValue(error.response.data);
+//     }
+//   }
+// };

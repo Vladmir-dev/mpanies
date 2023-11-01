@@ -14,6 +14,7 @@ import Otp from "./pages/Otp";
 import CartPage from "./pages/CartPage";
 import Checkout from "./pages/Checkout";
 import ProtectedRoutes from "./ProtectedRoutes";
+import UserDetailsPage from "./pages/UserDetailsPage";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -31,6 +32,7 @@ function App() {
               <Route path="/signUp" element={<SignUp />} />
               <Route path="/otp" element={<Otp />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/user" element={<UserDetailsPage />} />
 
               <Route element={<ProtectedRoutes />}>
                 <Route path="/checkout" element={<Checkout />} />

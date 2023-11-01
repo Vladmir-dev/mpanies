@@ -15,7 +15,7 @@ export const AllProducts = createAsyncThunk(
     console.log("The fetching data", token);
 
     try {
-      const response = await axios.get(`${baseurl}/products`);
+      const response = await axios.get(`${baseurl}/product`);
 	  console.log("response ===>", response)
       const data = [
         {
