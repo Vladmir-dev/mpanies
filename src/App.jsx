@@ -36,6 +36,7 @@ function App() {
 
               <Route element={<ProtectedRoutes />}>
                 <Route path="/checkout" element={<Checkout />} />
+                <Route path="/user" element={<UserDetailsPage />} />
               </Route>
             </Routes>
           </BrowserRouter>

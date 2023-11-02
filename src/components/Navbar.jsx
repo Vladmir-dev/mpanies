@@ -20,8 +20,6 @@ import { useNavigate } from "react-router-dom";
 import { links } from "../utils";
 
 const Navbar = () => {
-  
-
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
   const [showCart, setShowCart] = useState(false);
@@ -29,7 +27,7 @@ const Navbar = () => {
   const [search, setSearch] = useState(false);
   const [drop, setDrop] = useState("");
   const token = useSelector((state) => state.users.token);
-  
+  let navigate = useNavigate();
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -96,6 +94,7 @@ const Navbar = () => {
               key={index}
               onMouseEnter={() => setDrop(index)}
               onMouseLeave={() => setDrop("")}
+              
             >
               <Link
                 to={`/category/${item.link}`}
@@ -152,7 +151,7 @@ const Navbar = () => {
             <BsPersonFill
               onMouseEnter={() => setShowDrop(true)}
               onMouseLeave={() => setShowDrop(false)}
-
+              onClick={() => navigate("/user")}
               className="hidden md:block hover:text-green-500"
             />
 
