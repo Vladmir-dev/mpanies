@@ -1,17 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useSelector } from "react-redux";
-
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 
 const Checkout = () => {
-  
   const cart = useSelector((state) => state.cart.cartItems);
+  const user = useSelector((state) => state.users.currentUser);
   const totalPrice = cart.reduce(
     (price, item) => price + item.qty * item.price,
     0
   );
-  
+
+  const [amount, setAmount] = useState(totalPrice);
+  const [phone, setPhone] = useState("");
+
+  const config = {
+    public_key: "FLWPUBK_TEST-f8006a9c64a016743f03067d5fbdc60a-X",
+    tx_ref: Date.now(),
+    amount: amount,
+    currency: "UGX",
+    payment_options: "mobilemoney",
+    customer: {
+      email: user.email,
+      phone_number: phone,
+      name: user.first_name,
+    },
+    customizations: {
+      title: "my Payment Title",
+      description: "Payment for items in cart",
+      logo: "https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg",
+    },
+  };
+
+  const handleFlutterPayment = useFlutterwave(config);
   return (
     <div className="box-border">
       <Navbar />
@@ -23,13 +45,15 @@ const Checkout = () => {
               <input
                 placeholder="Enter Mobile Or Phone Number"
                 className="md:w-full w-[300px] p-2 rounded-md border-solid border-[1px] border-black"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
               />
             </div>
 
             <div>
               <label className="md:text-[30px] text-[25px]">Delivery</label>
               <div className="flex flex-col gap-5">
-                <div className="flex md:w-full w-[350px] pr-2 gap-5">
+                {/* <div className="flex md:w-full w-[350px] pr-2 gap-5">
                   <input
                     placeholder="First Name"
                     className="p-2 w-full rounded-md border-solid border-[1px] border-black"
@@ -38,7 +62,7 @@ const Checkout = () => {
                     placeholder="Last Name"
                     className="p-2 w-full rounded-md border-solid border-[1px] border-black"
                   />
-                </div>
+                </div> */}
                 <input
                   placeholder="Address"
                   className="p-2 md:w-full w-[340px] rounded-md border-solid border-[1px] border-black"
@@ -60,36 +84,20 @@ const Checkout = () => {
               </div>
             </div>
 
-            <div>
-              <label className="md:text-[30px] text-[25px]">Payment</label>
-              <h4>All transactions are secure and encrypted.</h4>
-              <div className="mt-[20px] md:w-full w-[350px] border-[2px] rounded-md border-solid border-black bg-gray-200">
-                <div className="flex justify-between items-center border-solid  border-[1px] border-black p-2">
-                  <h2>Credit Card</h2>
-                </div>
-                <div className="p-4 flex flex-col gap-5">
-                  <input
-                    placeholder="Card Number"
-                    className="p-2 rounded-md border-solid border-[1px] w-full border-black"
-                  />
-                  <div className="flex justify-between w-full gap-5">
-                    <input
-                      placeholder="Expiration Date"
-                      className="p-2 w-full rounded-md border-solid border-[1px] border-black"
-                    />
-                    <input
-                      placeholder="Security Code"
-                      className="p-2 w-full rounded-md border-solid border-[1px] border-black"
-                    />
-                  </div>
-                  <input
-                    placeholder="Name On Card"
-                    className="p-2 rounded-md border-solid border-[1px] border-black"
-                  />
-                </div>
-              </div>
-            </div>
-            <button className="bg-black text-white py-4 rounded-md hover:bg-green-600">
+            <button
+              onClick={() => {
+                setPhone("");
+                handleFlutterPayment({
+                  callback: (response) => {
+                    console.log(response);
+                    closePaymentModal();
+                  },
+
+                  onClose: () => {},
+                });
+              }}
+              className="bg-black text-white py-4 rounded-md hover:bg-green-600"
+            >
               Pay
             </button>
           </div>

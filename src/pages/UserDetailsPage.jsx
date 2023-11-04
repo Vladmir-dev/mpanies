@@ -51,15 +51,29 @@ const UserDetailsPage = () => {
         <div>
           <h1 className="text-[40px] font-light">Account Details</h1>
           <div className="">
+
+            
             <div className="flex gap-8 text-[25px]">
               <label className="font-bold">Name</label>
-              <h1>
+
+              {
+                user && (
+                 <h1>
                 {user.first_name} {user.last_name}
-              </h1>
+              </h1> 
+                )
+              }
+              
             </div>
             <div className="flex gap-8 text-[25px]">
               <label className="font-bold">Email</label>
-              <h1>{user.email}</h1>
+
+              {
+                user && (
+                  <h1>{user.email}</h1>
+                )
+              }
+              
             </div>
           </div>
         </div>

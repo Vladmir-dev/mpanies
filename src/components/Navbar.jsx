@@ -18,6 +18,7 @@ import { get_user } from "../features/auth/authActions";
 import { AllProducts } from "../features/products/productActions";
 import { useNavigate } from "react-router-dom";
 import { links } from "../utils";
+import { fetch_results } from "../features/search/searchActions";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -26,7 +27,10 @@ const Navbar = () => {
   const [showDrop, setShowDrop] = useState(false);
   const [search, setSearch] = useState(false);
   const [drop, setDrop] = useState("");
+  const [query, setQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   const token = useSelector((state) => state.users.token);
+  const products = useSelector((state) => state.products.products);
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -57,12 +61,31 @@ const Navbar = () => {
     dispatch(get_user(token));
   }, [dispatch, token]);
 
+  const handleSearch = (e) => {
+    navigate("/search");
+    const query = e.target.value.toLowerCase();
+    setQuery(query);
+
+    console.log("products", products);
+    // console.log("all products", allProducts);
+    // Perform search in the combined array
+    const results = products.filter((product) => {
+      // Customize the conditions based on your product data structure
+      return product.name.toLowerCase().includes(query);
+      // product.description.toLowerCase().includes(query) ||
+      // product.category.toLowerCase().includes(query)
+    });
+
+    setSearchResults(results);
+    dispatch(fetch_results(results));
+  };
+
   return (
     <div
       className={
         show
-          ? "w-full bg-green-200 flex justify-center items-center p-5 fixed z-10 shadow-md"
-          : "fixed w-full  flex justify-center items-center z-10 p-5"
+          ? "w-full bg-green-200 flex justify-center items-center p-5 top-0 fixed z-10 shadow-md"
+          : "fixed w-full  flex justify-center items-center z-10 p-5 top-0"
       }
     >
       <div className="flex justify-between items-center w-full md:px-[50px] px-[20px]">
@@ -94,10 +117,9 @@ const Navbar = () => {
               key={index}
               onMouseEnter={() => setDrop(index)}
               onMouseLeave={() => setDrop("")}
-              
             >
               <Link
-                to={`/category/${item.link}`}
+                to={`/category/${item.name}`}
                 className="hover:text-green-500 duration-500"
               >
                 <li>{item.name}</li>
@@ -108,7 +130,10 @@ const Navbar = () => {
                     <div className="flex bg-white p-4 flex-col gap-5 justify-evenly">
                       {item.subitems.map((ele, index) => (
                         <div key={index} className="">
-                          <h4 className="">{ele.name}</h4>
+                          <Link to={`/category/${item.name}`}>
+                            <h4 className="">{ele.name}</h4>
+                          </Link>
+
                           {/* <div className="flex flex-col gap-3 mt-[10px]">
                             {ele.headitems.map((sitem, index) => (
                               <h4 className="text-[18px]">{sitem.name}</h4>
@@ -270,7 +295,7 @@ const Navbar = () => {
                         <hr className="border-[1px] bg-gray-500" />
                         <div className="flex justify-between  w-[100%] py-4 text-[20px]">
                           <h4>Subtotal</h4>
-                          <h4>$ {totalPrice} USD</h4>
+                          <h4>{totalPrice} UGX</h4>
                         </div>
                         <Link to="/cart">
                           <button className="w-full bg-black hover:bg-green-600 duration-500 text-white mt-[10px] p-3 text-[20px] ">
@@ -302,6 +327,7 @@ const Navbar = () => {
                     type="text"
                     placeholder="Type To Search"
                     className="p-2 md:w-[500px] border-solid border-[2px] border-[#ffaf9b] focus:outline-0"
+                    onChange={handleSearch}
                   />
                 </div>
                 <button onClick={() => setSearch(!search)}>
