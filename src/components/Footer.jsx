@@ -39,7 +39,11 @@ const Footer = () => {
             </li>
             <li className="flex gap-3 justify-start items-center">
               {" "}
-              <GrMail /> info@example.com
+              <GrMail /> info@mpanies.com
+            </li>
+            <li className="flex gap-3 justify-start items-center">
+              {" "}
+              <GrMail /> sales@mpanies.com
             </li>
           </ul>
         </div>
