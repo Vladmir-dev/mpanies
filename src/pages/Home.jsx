@@ -17,7 +17,7 @@ const Home = () => {
     {
       id: 1,
       name: "Luke Moisturizing",
-      image1: image1,
+      image: image1,
       image2: "",
       price: "7.50",
       discount: "2%",
@@ -25,7 +25,7 @@ const Home = () => {
     {
       id: 2,
       name: "Luke Moisturizing",
-      image1: image2,
+      image: image2,
       image2: "",
       price: "7.50",
       discount: "2%",
@@ -33,7 +33,7 @@ const Home = () => {
     {
       id: 3,
       name: "Luke Moisturizing",
-      image1: image3,
+      image: image3,
       image2: "",
       price: "7.50",
       discount: "2%",
@@ -41,7 +41,7 @@ const Home = () => {
     {
       id: 4,
       name: "Luke Moisturizing",
-      image1: image4,
+      image: image4,
       image2: "",
       price: "7.50",
       discount: "2%",
@@ -49,7 +49,7 @@ const Home = () => {
     {
       id: 5,
       name: "Luke Moisturizing",
-      image1: image5,
+      image: image5,
       image2: "",
       price: "7.50",
       discount: "2%",

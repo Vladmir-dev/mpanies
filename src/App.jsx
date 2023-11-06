@@ -16,6 +16,7 @@ import Checkout from "./pages/Checkout";
 import ProtectedRoutes from "./ProtectedRoutes";
 import UserDetailsPage from "./pages/UserDetailsPage";
 import Search from "./pages/Search";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -34,6 +35,7 @@ function App() {
               <Route path="/otp" element={<Otp />} />
               <Route path="/cart" element={<CartPage />} />
               <Route path="search" element={<Search />} />
+              <Route path="forgot" element={<ForgotPassword />} />
 
               <Route element={<ProtectedRoutes />}>
                 <Route path="/checkout" element={<Checkout />} />

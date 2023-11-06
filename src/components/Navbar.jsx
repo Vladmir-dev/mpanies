@@ -11,6 +11,7 @@ import {
   AiFillFacebook,
   AiOutlineInstagram,
 } from "react-icons/ai";
+import { FiShoppingBag } from "react-icons/fi";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { add_to_cart, decrease_qty } from "../features/cart/cartActions";
@@ -26,7 +27,8 @@ const Navbar = () => {
   const [showCart, setShowCart] = useState(false);
   const [showDrop, setShowDrop] = useState(false);
   const [search, setSearch] = useState(false);
-  const [drop, setDrop] = useState("");
+  const [drop, setDrop] = useState(false);
+  const [sub, setSub] = useState("");
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const token = useSelector((state) => state.users.token);
@@ -112,7 +114,51 @@ const Navbar = () => {
               : "hidden md:block md:flex md:flex-row md:list-none md:gap-8 text-[20px]"
           }
         >
-          {links.map((item, index) => (
+          <div
+            className="group/submenu inline-block"
+            // onMouseEnter={() => setDrop(true)}
+            // onMouseLeave={() => setDrop(false)}
+          >
+            <h1 className="group-hover/submenu:text-green-500 duration-500 text-5xl">
+              Brands
+            </h1>
+
+            {/* {drop && ( */}
+            <div className="absolute md:bg-white rounded-md p-2 shadow-md duration-500 hidden group-hover/submenu:block">
+              {links.map((item, index) => (
+                <div
+                  className="group/items"
+                  // onMouseEnter={() => setSub(index)}
+                  // onMouseLeave={() => setSub("")}
+                  key={index}
+                >
+                  <Link to={`/category/${item.name}`}>
+                    <h2 className="p-1.5 text-[25px] hover:text-green-600">
+                      {item.name}
+                    </h2>
+                  </Link>
+
+                  {/* {sub === index && ( */}
+                  <div
+                    className="hidden ml-12 duration-700 group-hover/items:block"
+                    // className={`ml-12 ${sub === index ? "block" : "hidden"}`}
+                  >
+                    {item.subitems.map((ele, index) => (
+                      <div>
+                        <h3 className="text-[20px]" key={index}>
+                          {ele.name}
+                        </h3>
+                      </div>
+                    ))}
+                  </div>
+                  {/* )} */}
+                </div>
+              ))}
+            </div>
+            {/* )} */}
+          </div>
+
+          {/* {links.map((item, index) => (
             <div
               key={index}
               onMouseEnter={() => setDrop(index)}
@@ -134,11 +180,7 @@ const Navbar = () => {
                             <h4 className="">{ele.name}</h4>
                           </Link>
 
-                          {/* <div className="flex flex-col gap-3 mt-[10px]">
-                            {ele.headitems.map((sitem, index) => (
-                              <h4 className="text-[18px]">{sitem.name}</h4>
-                            ))}
-                          </div> */}
+                          
                         </div>
                       ))}
                     </div>
@@ -148,7 +190,7 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-          ))}
+          ))} */}
           <div className="md:hidden mt-[50px]">
             <div className="flex flex-col justify-start items-start gap-5">
               <div className="flex gap-3 justify-center items-center">
@@ -203,7 +245,7 @@ const Navbar = () => {
               <div className="bg-green-400 text-[10px] px-2 absolute mt-[-13px] ml-[11px] rounded-full">
                 {cart.length}
               </div>
-              <FaCartPlus className="hover:text-green-400" />
+              <FiShoppingBag className="hover:text-green-400" />
             </button>
             {showCart && (
               <div className="bg-white fixed md:h-[100vh] h-[120vh] mt-[-60px] md:w-[450px] p-4 w-[300px] md:ml-[-240px] right-0  shadow-xl">
