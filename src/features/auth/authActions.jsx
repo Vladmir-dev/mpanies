@@ -2,27 +2,25 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { baseurl } from "../../utils";
 
-export const otp = createAsyncThunk(
+export const sendotp = createAsyncThunk(
   "auth/otp",
-  async (code, { getState, rejectWithValue, dispatch }) => {
+  async (data, { getState, rejectWithValue, dispatch }) => {
     // console.log("login details ===>", code);
-    console.log("code ===>", code);
+    console.log("code ===>", data);
     try {
       // console.log("login details ===>", code);
-      const response = await axios.post(
-        `${baseurl}/auth/confirm/${code}`,
-        Config
-      );
+      const response = await axios.post(`${baseurl}/verifyotp/`, data, Config);
       //  navigate("/")
       console.log("response =====>", response.data);
       return response.data;
     } catch (error) {
-      if (error.response && error.response.data.message) {
-        // dispatch(setError("Incorrect credentials"));
-        return rejectWithValue(error.response.data.message);
-      } else {
-        return rejectWithValue(error.response.data);
-      }
+      console.log("Otp error", error);
+      // if (error.response && error.response.data.message) {
+      //   // dispatch(setError("Incorrect credentials"));
+      //   return rejectWithValue(error.response.data.message);
+      // } else {
+      //   return rejectWithValue(error.response.data);
+      // }
     }
   }
 );

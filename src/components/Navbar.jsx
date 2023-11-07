@@ -114,7 +114,7 @@ const Navbar = () => {
               : "hidden md:block md:flex md:flex-row md:list-none md:gap-8 text-[20px]"
           }
         >
-          <div className="group/submenu inline-block">
+          {/* <div className="group/submenu inline-block">
             <h1 className="group-hover/submenu:text-green-500 duration-500 text-5xl">
               Brands
             </h1>
@@ -143,9 +143,9 @@ const Navbar = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
-          {/* {links.map((item, index) => (
+          {links.map((item, index) => (
             <div
               key={index}
               onMouseEnter={() => setDrop(index)}
@@ -155,8 +155,9 @@ const Navbar = () => {
                 to={`/category/${item.name}`}
                 className="hover:text-green-500 duration-500"
               >
-                <li>{item.name}</li>
+                <li className="text-[20px] sm:text-[18px] md:text-md" >{item.name}</li>
               </Link>
+
               {drop === index && (
                 <div className="absolute   p-4  rounded-md shadow-md">
                   {item.submenu ? (
@@ -166,8 +167,6 @@ const Navbar = () => {
                           <Link to={`/category/${item.name}`}>
                             <h4 className="">{ele.name}</h4>
                           </Link>
-
-                          
                         </div>
                       ))}
                     </div>
@@ -177,7 +176,8 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-          ))} */}
+          ))}
+
           <div className="md:hidden mt-[50px]">
             <div className="flex flex-col justify-start items-start gap-5">
               <div className="flex gap-3 justify-center items-center">

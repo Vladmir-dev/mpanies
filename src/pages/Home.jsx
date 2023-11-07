@@ -10,7 +10,7 @@ import image3 from "../assets/shop-new-21.jpg";
 import image4 from "../assets/shop-new-22.jpg";
 import image5 from "../assets/shop-new-23.jpg";
 import NewsLetter from "../components/NewsLetter";
-import Footer from '../components/Footer'
+import Footer from "../components/Footer";
 
 const Home = () => {
   const new_products = [

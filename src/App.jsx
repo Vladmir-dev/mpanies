@@ -17,6 +17,7 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import UserDetailsPage from "./pages/UserDetailsPage";
 import Search from "./pages/Search";
 import ForgotPassword from "./pages/ForgotPassword";
+import VerifyOtp from "./pages/VerifyOtp";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -32,10 +33,11 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signUp" element={<SignUp />} />
-              <Route path="/otp" element={<Otp />} />
+              {/* <Route path="/otp" element={<Otp />} /> */}
               <Route path="/cart" element={<CartPage />} />
-              <Route path="search" element={<Search />} />
-              <Route path="forgot" element={<ForgotPassword />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/forgot" element={<ForgotPassword />} />
+              <Route path="/otp" element={<VerifyOtp />} />
 
               <Route element={<ProtectedRoutes />}>
                 <Route path="/checkout" element={<Checkout />} />

@@ -81,6 +81,7 @@ const NSlider = ({ products }) => {
         </Slider>
       </div>
     </div>
+    
     // <div
     //   className={`carousel-wrapper ${effect}`}
     //   onKeyDown={handleKeyDown}

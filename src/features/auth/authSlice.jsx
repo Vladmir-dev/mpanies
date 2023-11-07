@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login, signup, otp, get_user } from "./authActions";
+import { login, signup, sendotp, get_user } from "./authActions";
 
 const authSlice = createSlice({
   name: "auth",
@@ -31,7 +31,7 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.token = action.payload;
       console.log("token", state.token);
-      window.location.href = "/";
+      window.location.href = "/checkout";
     });
 
     builder.addCase(login.rejected, (state, action) => {
@@ -52,10 +52,10 @@ const authSlice = createSlice({
         alert(action.payload);
       } else {
         alert("Account created successfully, Check email for verification");
+        window.location.href = "/otp";
       }
 
       state.message = action.payload;
-      // window.location.href = "/login";
     });
 
     builder.addCase(signup.rejected, (state, action) => {
@@ -65,19 +65,19 @@ const authSlice = createSlice({
       console.log("Error", error);
     });
 
-    //otp
-    builder.addCase(otp.pending, (state) => {
+    //sendotp
+    builder.addCase(sendotp.pending, (state) => {
       state.isLoading = true;
       state.error = null;
     });
 
-    builder.addCase(otp.fulfilled, (state, action) => {
+    builder.addCase(sendotp.fulfilled, (state, action) => {
       state.isLoading = false;
       state.message = action.payload;
-      window.location.href = "/";
+      window.location.href = "/login";
     });
 
-    builder.addCase(otp.rejected, (state, action) => {
+    builder.addCase(sendotp.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });
