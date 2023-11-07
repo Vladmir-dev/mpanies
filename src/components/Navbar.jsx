@@ -114,31 +114,20 @@ const Navbar = () => {
               : "hidden md:block md:flex md:flex-row md:list-none md:gap-8 text-[20px]"
           }
         >
-          <div
-            className="group/submenu inline-block"
-            // onMouseEnter={() => setDrop(true)}
-            // onMouseLeave={() => setDrop(false)}
-          >
+          <div className="group/submenu inline-block">
             <h1 className="group-hover/submenu:text-green-500 duration-500 text-5xl">
               Brands
             </h1>
 
-            {/* {drop && ( */}
             <div className="absolute md:bg-white rounded-md p-2 shadow-md duration-500 hidden group-hover/submenu:block">
               {links.map((item, index) => (
-                <div
-                  className="group/items"
-                  // onMouseEnter={() => setSub(index)}
-                  // onMouseLeave={() => setSub("")}
-                  key={index}
-                >
+                <div className="group/items" key={index}>
                   <Link to={`/category/${item.name}`}>
                     <h2 className="p-1.5 text-[25px] hover:text-green-600">
                       {item.name}
                     </h2>
                   </Link>
 
-                  {/* {sub === index && ( */}
                   <div
                     className="hidden ml-12 duration-700 group-hover/items:block"
                     // className={`ml-12 ${sub === index ? "block" : "hidden"}`}
@@ -151,11 +140,9 @@ const Navbar = () => {
                       </div>
                     ))}
                   </div>
-                  {/* )} */}
                 </div>
               ))}
             </div>
-            {/* )} */}
           </div>
 
           {/* {links.map((item, index) => (
@@ -214,10 +201,11 @@ const Navbar = () => {
         </div>
         {/* </div> */}
         <div className="flex gap-8 text-[24px]">
-          <div>
+          <div
+            onMouseEnter={() => setShowDrop(true)}
+            onMouseLeave={() => setShowDrop(false)}
+          >
             <BsPersonFill
-              onMouseEnter={() => setShowDrop(true)}
-              onMouseLeave={() => setShowDrop(false)}
               onClick={() => navigate("/user")}
               className="hidden md:block hover:text-green-500"
             />

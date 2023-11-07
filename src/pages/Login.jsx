@@ -31,29 +31,29 @@ const Login = () => {
           <img src={logo} alt="logo" className="w-[200px]" />
         </div>
         <div className="flex flex-col justify-center py-2 place-items-center">
-          <div className="w-full flex py-2 gap-5 flex-col items-center">
-            <div className="flex flex-col">
+          <div className="w-full flex py-2 px-3 gap-5 flex-col items-center">
+            <div className="flex flex-col w-full">
               <label>Email</label>
               <input
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="md:max-w-[450px] md:w-[400px] p-2 border-solid border-[2px] rounded-xl border-black/20"
+                className="w-min-[150px] w-[100%] p-2 border-solid border-[2px] rounded-xl border-black/20"
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full">
               <label>Password</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="md:max-w-[450px] md:w-[400px] p-2 border-solid border-[2px] rounded-xl border-black/20"
+                className="w-min-[150px] w-[100%] p-2 border-solid border-[2px] rounded-xl border-black/20"
               />
             </div>
 
             <button
               onClick={handleLogin}
-              className="bg-black text-white md:max-w-[450px] md:w-[400px] py-3 rounded-md hover:bg-green-600 duration-500"
+              className="bg-black text-white w-min-[150px] w-[100%] py-3 rounded-md hover:bg-green-600 duration-500"
             >
               {loading ? "Loading..." : "Sign In "}
             </button>
