@@ -20,6 +20,7 @@ import { AllProducts } from "../features/products/productActions";
 import { useNavigate } from "react-router-dom";
 import { links } from "../utils";
 import { fetch_results } from "../features/search/searchActions";
+import { logout } from "../features/auth/authSlice";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -33,6 +34,7 @@ const Navbar = () => {
   const [searchResults, setSearchResults] = useState([]);
   const token = useSelector((state) => state.users.token);
   const products = useSelector((state) => state.products.products);
+  const user = useSelector((state) => state.users.currentUser);
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -155,7 +157,9 @@ const Navbar = () => {
                 to={`/category/${item.name}`}
                 className="hover:text-green-500 duration-500"
               >
-                <li className="text-[20px] sm:text-[18px] md:text-md" >{item.name}</li>
+                <li className="text-[20px] sm:text-[18px] md:text-md">
+                  {item.name}
+                </li>
               </Link>
 
               {drop === index && (
@@ -212,19 +216,29 @@ const Navbar = () => {
 
             {showDrop && (
               <div className="bg-white absolute shadow-md px-4 pt-4 pb-[15px] mt-[10px] rounded-md ml-[-80px] w-[250px]">
-                <div>
-                  <Link to="/login">
-                    <button className="bg-black hover:bg-green-600 duration-500 text-white w-full text-[20px] rounded-md py-[5px]">
-                      Sign In
-                    </button>
-                  </Link>
-                  <div className="mt-[10px] text-[18px] flex justify-center items-center gap-2">
-                    <h4 className="text-[17px]">New to Mpanies ?</h4>
-                    <Link to="/signup">
-                      <h4 className="text-blue-500">Sign Up</h4>
+                {user ? (
+                  <div className="flex flex-col justify-center items-center">
+                    <Link to="/user">
+                      <h1 className="hover:text-green-300">Account</h1>
                     </Link>
+
+                    <button onClick={() => dispatch(logout())} className="hover:text-green-300">Logout</button>
                   </div>
-                </div>
+                ) : (
+                  <div>
+                    <Link to="/login">
+                      <button className="bg-black hover:bg-green-600 duration-500 text-white w-full text-[20px] rounded-md py-[5px]">
+                        Sign In
+                      </button>
+                    </Link>
+                    <div className="mt-[10px] text-[18px] flex justify-center items-center gap-2">
+                      <h4 className="text-[17px]">New to Mpanies ?</h4>
+                      <Link to="/signup">
+                        <h4 className="text-blue-500">Sign Up</h4>
+                      </Link>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>

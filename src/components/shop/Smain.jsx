@@ -10,22 +10,21 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 const Smain = () => {
-
   const products = useSelector((state) => state.products.products);
-  const categoryName = useParams()
-  // console.log("category ===>",categName.id)
-  const filteredProducts = products.filter(
-    product => product.category.name === categoryName.id
+  const categoryName = useParams();
+  console.log("category ===>", products);
+  const filteredProducts = products?.filter(
+    (product) => product.category.name === categoryName.id
   );
 
-  console.log("all products ==>", filteredProducts)
+  console.log("all products ==>", filteredProducts);
 
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 16;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
-  const records = filteredProducts.slice(firstIndex, lastIndex);
-  const npage = Math.ceil(filteredProducts.length / recordsPerPage);
+  const records = filteredProducts?.slice(firstIndex, lastIndex);
+  const npage = Math.ceil(filteredProducts?.length / recordsPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
   const prevPage = () => {

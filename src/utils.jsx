@@ -160,27 +160,21 @@ export const links = [
     ],
   },
   {
-    name: "Fragrances",
+    name: "Perfumes",
     link: "4",
     submenu: true,
     subitems: [
       {
-        name: "Clensers",
+        name: "Cologne",
       },
       {
-        name: "Moisturizers",
+        name: "Body Sprays",
       },
       {
-        name: "Serums",
+        name: "Fragrance Sets",
       },
       {
-        name: "SunScreen",
-      },
-      {
-        name: "Face Masks",
-      },
-      {
-        name: "Eye Creams",
+        name: "Essential Oils",
       },
     ],
   },

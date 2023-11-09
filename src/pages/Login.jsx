@@ -3,24 +3,58 @@ import logo from "../assets/mpanies1.png";
 import { Link } from "react-router-dom";
 import { login } from "../features/auth/authActions";
 import { useSelector, useDispatch } from "react-redux";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [emailValue, setEmailValue] = useState({
+    email: "",
+  });
+  const [passValue, setPassValue] = useState({
+    password: "",
+    showPassword: false,
+  });
 
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.users.isLoading);
 
+  const handleClickShowPassword = () => {
+    setPassValue({ ...passValue, showPassword: !passValue.showPassword });
+  };
+
   const handleLogin = () => {
-    if (password === "" || email === "") {
+    if (passValue.password === "" || emailValue.email === "") {
       alert("passwrd or email is empty");
     } else {
-      console.log(email);
-      console.log(password);
-      dispatch(login({ email: email, password: password }));
-      setEmail("");
-      setPassword("");
+      console.log(emailValue.email);
+      console.log(passValue.password);
+
+      dispatch(
+        login({ email: emailValue.email, password: passValue.password })
+      );
+
+      setEmailValue({
+        email: "",
+      });
+
+      setPassValue({
+        password: "",
+        showPassword: false,
+      });
     }
+  };
+
+  const handleEmailValue = (e) => {
+    const { name, value } = e.target;
+
+    setEmailValue({
+      ...emailValue,
+      [name]: value,
+    });
+    // console.log(emailValue);
+  };
+
+  const handlePasswordChange = (prop) => (event) => {
+    setPassValue({ ...passValue, [prop]: event.target.value });
   };
 
   return (
@@ -35,20 +69,33 @@ const Login = () => {
             <div className="flex flex-col w-full">
               <label>Email</label>
               <input
+                className="input block border border-gray-300 focus:border-pitch-black  py-3 px-3 w-full focus:outline-none "
                 type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-min-[150px] w-[100%] p-2 border-solid border-[2px] rounded-xl border-black/20"
+                name="email"
+                value={emailValue.email}
+                onChange={handleEmailValue}
               />
             </div>
             <div className="flex flex-col w-full">
               <label>Password</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-min-[150px] w-[100%] p-2 border-solid border-[2px] rounded-xl border-black/20"
-              />
+              <div className="eye_div">
+                <input
+                  className="input block border border-gray-300 focus:border-pitch-black  py-3 px-3 w-full focus:outline-none "
+                  type={passValue.showPassword ? "text" : "password"}
+                  onChange={handlePasswordChange("password")}
+                  value={passValue.password}
+                />
+                <div
+                  className="absolute top-[280px] right-[45px] text-[35px]"
+                  onClick={handleClickShowPassword}
+                >
+                  {passValue.showPassword ? (
+                    <AiOutlineEye className="h-6 font-extralight" />
+                  ) : (
+                    <AiOutlineEyeInvisible className="h-6 font-extralight" />
+                  )}
+                </div>
+              </div>
             </div>
 
             <button

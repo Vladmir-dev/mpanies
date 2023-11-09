@@ -31,7 +31,7 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.token = action.payload;
       console.log("token", state.token);
-      window.location.href = "/checkout";
+      window.location.href = "/";
     });
 
     builder.addCase(login.rejected, (state, action) => {

@@ -5,14 +5,27 @@ import { signup } from "../features/auth/authActions";
 import { useSelector, useDispatch } from "react-redux";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const SignUp = () => {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
   // const [phone_number, setPhoneNumber] = useState("");
-  const [password, setPassword] = useState("");
-  const [cpassword, setConfirmPassword] = useState("");
+  const [passValue, setPassValue] = useState({
+    password: "",
+    cpassword: "",
+    showPassword: false,
+  });
+
+  const handlePasswordChange = (prop) => (event) => {
+    setPassValue({ ...passValue, [prop]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setPassValue({ ...passValue, showPassword: !passValue.showPassword });
+  };
+  // const [cpassword, setConfirmPassword] = useState("");
 
   //   console.log(phone_number.slice(1));
   const dispatch = useDispatch();
@@ -38,15 +51,14 @@ const SignUp = () => {
             last_name: last_name,
             email: email,
             // phone_number: phone_number.slice(1),
-            password: password,
+            password: passValue.password,
           })
         );
         setFirstName("");
         setLastName("");
         setEmail("");
         // setPhoneNumber("");
-        setPassword("");
-        setConfirmPassword("");
+        setPassValue("");
       }
     }
   };
@@ -104,21 +116,45 @@ const SignUp = () => {
             </div> */}
             <div className="flex flex-col w-full">
               <label>Password</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-min-[150px] w-[100%] p-2 border-solid border-[2px] rounded-xl border-black/20"
-              />
+              <div>
+                <input
+                  type={passValue.showPassword ? "text" : "password"}
+                  value={passValue.password}
+                  onChange={handlePasswordChange("password")}
+                  className="w-min-[150px] w-[100%] p-2 border-solid border-[2px] rounded-xl border-black/20"
+                />
+                <div
+                  className="absolute top-[445px] right-[45px] text-[35px]"
+                  onClick={handleClickShowPassword}
+                >
+                  {passValue.showPassword ? (
+                    <AiOutlineEye className="h-6 font-extralight" />
+                  ) : (
+                    <AiOutlineEyeInvisible className="h-6 font-extralight" />
+                  )}
+                </div>
+              </div>
             </div>
             <div className="flex flex-col w-full">
               <label>Confirm Password</label>
-              <input
-                type="password"
-                value={cpassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-min-[150px] w-[100%] p-2 border-solid border-[2px] rounded-xl border-black/20"
-              />
+              <div>
+                <input
+                  type={passValue.showPassword ? "text" : "password"}
+                  value={passValue.cpassword}
+                  onChange={handlePasswordChange("cpassword")}
+                  className="w-min-[150px] w-[100%] p-2 border-solid border-[2px] rounded-xl border-black/20"
+                />
+                <div
+                  className="absolute top-[535px] right-[45px] text-[35px]"
+                  onClick={handleClickShowPassword}
+                >
+                  {passValue.showPassword ? (
+                    <AiOutlineEye className="h-6 font-extralight" />
+                  ) : (
+                    <AiOutlineEyeInvisible className="h-6 font-extralight" />
+                  )}
+                </div>
+              </div>
             </div>
             <button
               onClick={handleSignUp}
