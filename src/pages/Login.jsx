@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { login } from "../features/auth/authActions";
 import { useSelector, useDispatch } from "react-redux";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { Bounce } from "react-activity";
+import "react-activity/dist/library.css";
 
 const Login = () => {
   const [emailValue, setEmailValue] = useState({
@@ -102,7 +104,7 @@ const Login = () => {
               onClick={handleLogin}
               className="bg-black text-white w-min-[150px] w-[100%] py-3 rounded-md hover:bg-green-600 duration-500"
             >
-              {loading ? "Loading..." : "Sign In "}
+              {loading ? <Bounce /> : "Sign In "}
             </button>
             <div className="flex gap-4">
               <h4>Don't Have An Account ?</h4>

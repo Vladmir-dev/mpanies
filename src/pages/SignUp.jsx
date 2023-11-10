@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { Bounce } from "react-activity";
+import "react-activity/dist/library.css";
 
 const SignUp = () => {
   const [first_name, setFirstName] = useState("");
@@ -160,7 +162,7 @@ const SignUp = () => {
               onClick={handleSignUp}
               className="bg-black text-white w-min-[150px] w-[100%] py-3 rounded-md hover:bg-green-600 duration-500"
             >
-              {loading ? "Loading" : " Sign Up"}
+              {loading ? <Bounce /> : " Sign Up"}
             </button>
             <div className="flex gap-4">
               <h4>Already Have An Account ?</h4>

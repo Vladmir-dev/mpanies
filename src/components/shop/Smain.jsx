@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Scard from "./Scard";
 import image1 from "../../assets/shop-new-4.jpg";
 import image2 from "../../assets/shop-new-14.jpg";
@@ -8,9 +8,13 @@ import image5 from "../../assets/shop-new-23.jpg";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import CardList from "./CardList";
+import SkeletonCard from "../SkeletonCard";
+import "../../App.css";
 
 const Smain = () => {
   const products = useSelector((state) => state.products.products);
+  // const loading = useSelector((state) => state.products.is_loading);
   const categoryName = useParams();
   console.log("category ===>", products);
   const filteredProducts = products?.filter(
@@ -20,6 +24,9 @@ const Smain = () => {
   console.log("all products ==>", filteredProducts);
 
   const [currentPage, setCurrentPage] = useState(1);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const recordsPerPage = 16;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
@@ -43,6 +50,16 @@ const Smain = () => {
     setCurrentPage(id);
   };
 
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setData(records);
+      setLoading(false);
+    }, 5000);
+    // Cancel the timer while unmounting
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="md:flex-[8.2] bg-white w-full h-auto flex flex-col">
       <div className="w-full bg-green-200 p-6 rounded-md flex justify-end items-end">
@@ -58,19 +75,8 @@ const Smain = () => {
       </div>
 
       <div>
-        {records && records.length > 0 ? (
-          <div className="mt-[20px] grid md:grid-cols-4 grid-cols-2 mr-15">
-            {records.map((item, index) => (
-              <div key={index}>
-                <Scard item={item} />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div>
-            <h1>Empty</h1>
-          </div>
-        )}
+        {loading && <SkeletonCard />}
+        {!loading && <CardList data={records} />}
       </div>
 
       <nav className="w-full flex justify-center items-center mt-[50px]">
