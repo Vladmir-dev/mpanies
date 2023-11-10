@@ -13,8 +13,8 @@ const CardList = ({ data }) => {
           ))}
         </div>
       ) : (
-        <div className="flex justify-center items-center">
-          <h1>Empty</h1>
+        <div className="flex justify-center items-center m-[100px]">
+          <h1>EMPTY</h1>
         </div>
       )}
     </div>

@@ -110,9 +110,10 @@ const Navbar = () => {
         </Link>
         {/* <div className="hidden md:block"> */}
         <div
+          tabindex="0"
           className={
             open
-              ? "flex md:flex-row flex-col ml-[-20px] md:ml-0 md:h-auto h-[100vh] md:p-0 p-4 md:bg-inherit transition ease-in-out delay-450 items-start justify-start md:relative fixed md:top-0 top-[130px] opacity-100 bg-green-200  md:shadow-none shadow-xl md:w-auto w-[300px] list-none gap-8 text-[20px]"
+              ? "flex md:flex-row flex-col ml-[-20px] mt-[-50px] md:overflow-0 overflow-y-auto md:ml-0 md:h-auto h-[100vh] md:p-0 p-4 md:bg-inherit transition ease-in-out delay-450 items-start justify-start md:relative fixed md:top-0 top-[130px] opacity-100 bg-green-200  md:shadow-none shadow-xl md:w-auto w-[300px] list-none gap-8 text-[20px]"
               : "hidden md:block md:flex md:flex-row md:list-none md:gap-8 text-[20px]"
           }
         >
@@ -150,6 +151,7 @@ const Navbar = () => {
           {links.map((item, index) => (
             <div
               key={index}
+              className=""
               onMouseEnter={() => setDrop(index)}
               onMouseLeave={() => setDrop("")}
             >
@@ -163,9 +165,9 @@ const Navbar = () => {
               </Link>
 
               {drop === index && (
-                <div className="absolute   p-4  rounded-md shadow-md">
+                <div className="md:absolute md:bg-white  p-4   md:shadow-md">
                   {item.submenu ? (
-                    <div className="flex bg-white p-4 flex-col gap-5 justify-evenly">
+                    <div className="flex md:bg-white p-4 flex-col gap-5 justify-evenly">
                       {item.subitems.map((ele, index) => (
                         <div key={index} className="">
                           <Link to={`/category/${item.name}`}>
@@ -222,7 +224,12 @@ const Navbar = () => {
                       <h1 className="hover:text-green-300">Account</h1>
                     </Link>
 
-                    <button onClick={() => dispatch(logout())} className="hover:text-green-300">Logout</button>
+                    <button
+                      onClick={() => dispatch(logout())}
+                      className="hover:text-green-300"
+                    >
+                      Logout
+                    </button>
                   </div>
                 ) : (
                   <div>

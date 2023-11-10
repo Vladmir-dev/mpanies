@@ -70,13 +70,19 @@ const Footer = () => {
           <h1 className="text-[20px] uppercase">Share With Us</h1>
           <ul className="flex text-[20px] gap-2">
             <li>
-              <AiOutlineTwitter />
+              <Link to="/">
+                <AiOutlineTwitter />
+              </Link>
             </li>
             <li>
-              <AiFillFacebook />
+              <Link to="https://www.facebook.com/profile.php?id=61553561423098&mibextid=LQQJ4d ">
+                <AiFillFacebook />
+              </Link>
             </li>
             <li>
-              <AiOutlineInstagram />
+              <Link to="/">
+                <AiOutlineInstagram />
+              </Link>
             </li>
           </ul>
         </div>
