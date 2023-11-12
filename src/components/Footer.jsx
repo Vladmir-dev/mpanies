@@ -35,7 +35,7 @@ const Footer = () => {
           <h1 className="text-[20px] uppercase">Reach Us</h1>
           <ul className="flex flex-col gap-2">
             <li className="flex gap-3 justify-start items-center">
-              <BsTelephoneFill /> (0000) 123 - 456789
+              <BsTelephoneFill /> +256 707 684 746 / +257 781316707
             </li>
             <li className="flex gap-3 justify-start items-center">
               {" "}
@@ -70,7 +70,7 @@ const Footer = () => {
           <h1 className="text-[20px] uppercase">Share With Us</h1>
           <ul className="flex text-[20px] gap-2">
             <li>
-              <Link to="/">
+              <Link to="https://twitter.com/mpanies_?s=21&t=DZ6LyZ87TLncOCvulE9Iuw">
                 <AiOutlineTwitter />
               </Link>
             </li>
