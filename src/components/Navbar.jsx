@@ -259,7 +259,7 @@ const Navbar = () => {
             {showCart && (
               <div className="bg-white fixed md:h-[100vh] h-[120vh] mt-[-60px] md:w-[450px] p-4 w-[300px] md:ml-[-240px] right-0  shadow-xl">
                 <div className=" flex justify-between">
-                  <h1>Your Cart</h1>
+                  <h1>Your Bag</h1>
                   <button onClick={() => setShowCart(!showCart)}>
                     <AiOutlineClose className="text-[27px]" />
                   </button>
@@ -270,7 +270,7 @@ const Navbar = () => {
                   {cart.length <= 0 ? (
                     <div className="flex flex-col h-[100vh]  justify-around items-center">
                       <div className="flex flex-col gap-8">
-                        <h1 className="text-[25px]">Your cart is empty</h1>
+                        <h1 className="text-[25px]">Your bag is empty</h1>
 
                         <button
                           onClick={() => setOpenCart(!openCart)}
@@ -350,7 +350,7 @@ const Navbar = () => {
                         </div>
                         <Link to="/cart">
                           <button className="w-full bg-black hover:bg-green-600 duration-500 text-white mt-[10px] p-3 text-[20px] ">
-                            View Cart
+                            View Bag
                           </button>
                         </Link>
                         <Link to="/checkout">

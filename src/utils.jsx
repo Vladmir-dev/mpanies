@@ -1,5 +1,5 @@
 const localdomain = "http://localhost:8000";
-const hdomain = "https://mpanies-api.onrender.com";
+const hdomain = "https://api.mpanies.com";
 
 export const baseurl = `${hdomain}/api/v1`;
 

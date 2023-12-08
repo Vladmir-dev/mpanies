@@ -21,12 +21,12 @@ const CartPage = () => {
 			<div style={bgImageStyle} className="h-[200px] w-full">
 				<div className="flex justify-center items-center h-full  bg-green-200/60">
 					<h1 className="uppercase text-[30px] mt-[50px]">
-						YOUR SHOPPING CART
+						YOUR SHOPPING BAG
 					</h1>
 				</div>
 			</div>
 			<div className="mt-[100px] flex flex-col justify-center items-center">
-				<h1 className="text-[40px]">Your Cart</h1>
+				<h1 className="text-[40px]">Your Bag</h1>
 				<Link to="/shop">
 					<h2 className="text-[20px] font-light cursor-pointer hover:text-green-500">
 						Continue Shopping
