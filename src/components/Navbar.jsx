@@ -77,14 +77,22 @@ const Navbar = () => {
     const query = e.target.value.toLowerCase();
     setQuery(query);
 
-    // console.log("products", products);
-    // console.log("all products", allProducts);
-    // Perform search in the combined array
     const results = products.filter((product) => {
-      // Customize the conditions based on your product data structure
-      return product.name.toLowerCase().includes(query);
-      // product.description.toLowerCase().includes(query) ||
-      // product.category.toLowerCase().includes(query)
+      const productNameIncludesQuery = product.name
+        .toLowerCase()
+        .includes(query);
+      const categoryNameIncludesQuery = product.category.name
+        .toLowerCase()
+        .includes(query);
+      const subcategoryIncludesQuery = product.sub_category.some(
+        (subcategory) => subcategory.name.toLowerCase().includes(query)
+      );
+
+      return (
+        productNameIncludesQuery ||
+        categoryNameIncludesQuery ||
+        subcategoryIncludesQuery
+      );
     });
 
     setSearchResults(results);

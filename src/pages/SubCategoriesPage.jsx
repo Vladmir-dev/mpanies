@@ -22,7 +22,7 @@ const SubCategoriesPage = () => {
   const filteredProducts = products.filter(
     (product) =>
       product.category.id === Number(id) &&
-      product.category.subcategories.some(
+      product.sub_category.some(
         (subcategory) => subcategory.id === Number(subcategoryId)
       )
   );
