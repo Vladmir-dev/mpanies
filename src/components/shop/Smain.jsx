@@ -12,16 +12,14 @@ import CardList from "./CardList";
 import SkeletonCard from "../SkeletonCard";
 import "../../App.css";
 
-const Smain = () => {
-  const products = useSelector((state) => state.products.products);
+const Smain = ({ products }) => {
   // const loading = useSelector((state) => state.products.is_loading);
-  const categoryName = useParams();
-  console.log("category ===>", products);
-  const filteredProducts = products?.filter(
-    (product) => product.category.name === categoryName.id
-  );
+  // const categoryName = useParams();
 
-  console.log("all products ==>", filteredProducts);
+  console.log("products ===>", products);
+ 
+
+  console.log("all products ==>", products);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState([]);
@@ -30,8 +28,8 @@ const Smain = () => {
   const recordsPerPage = 16;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
-  const records = filteredProducts?.slice(firstIndex, lastIndex);
-  const npage = Math.ceil(filteredProducts?.length / recordsPerPage);
+  const records = products?.slice(firstIndex, lastIndex);
+  const npage = Math.ceil(products?.length / recordsPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
   const prevPage = () => {

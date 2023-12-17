@@ -18,6 +18,7 @@ import UserDetailsPage from "./pages/UserDetailsPage";
 import Search from "./pages/Search";
 import ForgotPassword from "./pages/ForgotPassword";
 import VerifyOtp from "./pages/VerifyOtp";
+import SubCategoriesPage from "./pages/SubCategoriesPage";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -30,6 +31,11 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route path="/category/:id" element={<ShopPage />} />
+              <Route
+                path="/category/:id/subcategories/:subcategoryId"
+                element={<SubCategoriesPage />}
+              />
+
               <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signUp" element={<SignUp />} />

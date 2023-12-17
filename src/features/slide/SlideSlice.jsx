@@ -17,7 +17,10 @@ const slideSlice = createSlice({
 
     builder.addCase(fetchSlides.fulfilled, (state, action) => {
       state.is_loading = false;
-      state.slides = action.payload;
+
+      if (action.payload.status === 200) {
+        state.slides = action.payload.data;
+      }
     });
 
     builder.addCase(fetchSlides.rejected, (state, action) => {

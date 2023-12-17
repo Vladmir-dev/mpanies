@@ -21,6 +21,8 @@ import { useNavigate } from "react-router-dom";
 import { links } from "../utils";
 import { fetch_results } from "../features/search/searchActions";
 import { logout } from "../features/auth/authSlice";
+import { fetchSlides } from "../features/slide/SlideActions";
+import { fetchCategories } from "../features/category/categoryActions";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -53,7 +55,7 @@ const Navbar = () => {
   // const bg = "[#A5D6A6]"
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cartItems);
-  console.log("cart==>", cart);
+  // console.log("cart==>", cart);
 
   const totalPrice = cart.reduce(
     (price, item) => price + item.qty * item.price,
@@ -61,8 +63,13 @@ const Navbar = () => {
   );
 
   useEffect(() => {
-    dispatch(AllProducts(token));
-    dispatch(get_user(token));
+    const fetchData = async () => {
+      dispatch(AllProducts(token));
+      dispatch(get_user(token));
+      dispatch(fetchSlides(token));
+      dispatch(fetchCategories(token));
+    };
+    fetchData();
   }, [dispatch, token]);
 
   const handleSearch = (e) => {
@@ -70,7 +77,7 @@ const Navbar = () => {
     const query = e.target.value.toLowerCase();
     setQuery(query);
 
-    console.log("products", products);
+    // console.log("products", products);
     // console.log("all products", allProducts);
     // Perform search in the combined array
     const results = products.filter((product) => {
@@ -83,6 +90,11 @@ const Navbar = () => {
     setSearchResults(results);
     dispatch(fetch_results(results));
   };
+
+  const categories = useSelector((state) => state.category.categories);
+  const loading = useSelector((state) => state.category.is_loading);
+
+  // console.log("categories ==>", categories);
 
   return (
     <div
@@ -148,7 +160,7 @@ const Navbar = () => {
             </div>
           </div> */}
 
-          {links.map((item, index) => (
+          {categories.map((item, index) => (
             <div
               key={index}
               className=""
@@ -156,7 +168,7 @@ const Navbar = () => {
               onMouseLeave={() => setDrop("")}
             >
               <Link
-                to={`/category/${item.name}`}
+                to={`/category/${item.id}`}
                 className="hover:text-green-500 duration-500"
               >
                 <li className="text-[20px] sm:text-[18px] md:text-md">
@@ -166,19 +178,21 @@ const Navbar = () => {
 
               {drop === index && (
                 <div className="md:absolute md:bg-white  p-4   md:shadow-md">
-                  {item.submenu ? (
-                    <div className="flex md:bg-white p-4 flex-col gap-5 justify-evenly">
-                      {item.subitems.map((ele, index) => (
-                        <div key={index} className="">
-                          <Link to={`/category/${item.name}`}>
-                            <h4 className="">{ele.name}</h4>
-                          </Link>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
+                  {/* {item.submenu ? ( */}
+                  <div className="flex md:bg-white p-4 flex-col gap-5 justify-evenly">
+                    {item.subcategories.map((ele, index) => (
+                      <div key={index} className="">
+                        <Link
+                          to={`/category/${item.id}/subcategories/${ele.id}`}
+                        >
+                          <h4 className="">{ele.name}</h4>
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                  {/* ) : (
                     <div></div>
-                  )}
+                  )} */}
                 </div>
               )}
             </div>

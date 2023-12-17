@@ -20,7 +20,7 @@ const productsSlice = createSlice({
         });
 
         builder.addCase(AllProducts.fulfilled, (state, action) => {
-            console.log("payload ==>", action.payload)
+            // console.log("payload ==>", action.payload)
             state.is_loading = false;
             state.products = action.payload;
         });
