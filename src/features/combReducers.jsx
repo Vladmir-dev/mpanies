@@ -7,7 +7,7 @@ import productsReducer from "./products/productSlice";
 import searchReducer from "./search/searchSlice";
 import slideReducer from "./slide/SlideSlice";
 import categoryReducer from "./category/categorySlice";
-// import currencyReducer from './currencySlice';
+import orderReducer from "./orders/orderSlice";
 
 // import Cart from "../../common/Cart/Cart";
 // import userReducer from './addItem/userSlice'
@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
   products: productsReducer,
   search: searchReducer,
   category: categoryReducer,
-  // currency:currencyReducer
+  order: orderReducer,
 });
 
 export default rootReducer;

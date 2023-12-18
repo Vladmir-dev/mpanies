@@ -10,9 +10,12 @@ const cartSlice = createSlice({
     is_loading: false,
     error: false,
     cartItems: [],
-    order_filled:false
+    order_filled: false,
   },
   reducers: {
+    reset: (state) => {
+      (state.cartItems = []), (state.error = false), (state.is_loading = false);
+    },
     // addToCart: (state,action) => {
     //     state.items.push(action.payload)
     // },
@@ -33,9 +36,7 @@ const cartSlice = createSlice({
       const data = action.payload;
       console.log("product id", data);
 
-      const productExists = state.cartItems.find(
-        (item) => item.id === data.id
-      );
+      const productExists = state.cartItems.find((item) => item.id === data.id);
 
       if (productExists) {
         state.cartItems = state.cartItems.map((item) =>
@@ -53,7 +54,7 @@ const cartSlice = createSlice({
         });
 
         // if (data.selectedImageURL && data.size) {
-          
+
         // } else {
         //   state.cartItems.push({
         //     ...data.product,
@@ -61,7 +62,6 @@ const cartSlice = createSlice({
         //   });
         // }
       }
-
     });
 
     builder.addCase(add_to_cart.rejected, (state, action) => {
@@ -76,7 +76,7 @@ const cartSlice = createSlice({
     });
 
     builder.addCase(decrease_qty.fulfilled, (state, action) => {
-      console.log("payload ==>", action.payload)
+      console.log("payload ==>", action.payload);
       state.is_loading = false;
       const product = action.payload;
       const productExists = state.cartItems.find(
@@ -100,8 +100,8 @@ const cartSlice = createSlice({
       state.is_loading = false;
       state.error = action.payload;
     });
-`  
-     `
+    `  
+     `;
     // builder.addCase(create_order.pending, (state, action) => {
     //   state.is_loading = true;
     //   state.error = false;
@@ -120,5 +120,5 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { reset } = cartSlice.actions;
 export default cartSlice.reducer;

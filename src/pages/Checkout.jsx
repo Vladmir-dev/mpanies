@@ -1,19 +1,54 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
+// import { create } from "@mui/material/styles/createTransitions";
+import { create_order } from "../features/orders/orderActions";
+import { reset } from "../features/cart/cartSlice";
 
 const Checkout = () => {
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cartItems);
   const user = useSelector((state) => state.users.currentUser);
+  const token = useSelector((state) => state.users.token);
+
   const totalPrice = cart.reduce(
     (price, item) => price + item.qty * item.price,
     0
   );
 
+  console.log("cart items", cart);
+
+  const handleOrder = () => {
+    console.log("hello begining");
+
+    let formData = [];
+    for (let i = 0; i < cart.length; i++) {
+      let item = {
+        product: cart[i].id,
+        quantity: cart[i].qty,
+      };
+      console.log("item", item);
+      formData.push(item);
+    }
+    console.log("order", formData);
+
+    const data = {
+      user: user.id,
+      items: formData,
+      total_price: totalPrice,
+    };
+    dispatch(create_order({ token, data }));
+    dispatch(reset());
+  };
+
   const [amount, setAmount] = useState(totalPrice);
   const [phone, setPhone] = useState("");
+  // const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [district, setDistrict] = useState("");
+  const [zip, setZip] = useState("");
 
   const config = {
     public_key: "FLWPUBK_TEST-f8006a9c64a016743f03067d5fbdc60a-X",
@@ -63,21 +98,28 @@ const Checkout = () => {
                     className="p-2 w-full rounded-md border-solid border-[1px] border-black"
                   />
                 </div> */}
-                <input
+                {/* <input
                   placeholder="Address"
+                  onChange={(e) => setAddress(e.target.value)}
                   className="p-2 md:w-full w-[340px] rounded-md border-solid border-[1px] border-black"
-                />
+                /> */}
                 <div className="flex gap-4 md:w-full w-[350px] pr-2">
                   <input
+                    value={city}
                     placeholder="City"
+                    onChange={(e) => setCity(e.target.value)}
                     className="p-2 w-full rounded-md border-solid border-[1px] border-black"
                   />
                   <input
+                    value={district}
                     placeholder="District"
+                    onChange={(e) => setDistrict(e.target.value)}
                     className="p-2 w-full rounded-md border-solid border-[1px] border-black"
                   />
                   <input
+                    value={zip}
                     placeholder="Zip Code"
+                    onChange={(e) => setZip(e.target.value)}
                     className="p-2 w-full rounded-md border-solid border-[1px] border-black"
                   />
                 </div>
@@ -86,15 +128,31 @@ const Checkout = () => {
 
             <button
               onClick={() => {
-                setPhone("");
-                handleFlutterPayment({
-                  callback: (response) => {
-                    console.log(response);
-                    closePaymentModal();
-                  },
+                if (
+                  phone === "" ||
+                  city === "" ||
+                  district === "" ||
+                  zip === ""
+                ) {
+                  alert("Please fill in your contact details");
+                } else {
+                  handleOrder();
 
-                  onClose: () => {},
-                });
+                  setPhone("");
+                  // setAddress("");
+                  setCity("");
+                  setDistrict("");
+                  setZip("");
+
+                  handleFlutterPayment({
+                    callback: (response) => {
+                      console.log(response);
+                      closePaymentModal();
+                    },
+
+                    onClose: () => {},
+                  });
+                }
               }}
               className="bg-black text-white py-4 rounded-md hover:bg-green-600"
             >

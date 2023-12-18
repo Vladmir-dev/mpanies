@@ -89,10 +89,10 @@ const Cart = () => {
 				</Table>
 			</TableContainer>
 			<div className="flex md:flex-row flex-col md:justify-between justify-center items-center gap-8 mt-[100px]">
-				<div className="flex flex-col ">
+				{/* <div className="flex flex-col ">
 					<label>Order Special Instructions</label>
 					<textarea className="border-solid w-[300px] h-[150px] border-[1px] border-black" />
-				</div>
+				</div> */}
 				<div className="flex flex-col md:justify-end md:items-end">
 					<div className="flex gap-10 text-[19px]">
 						<h2>Subtotal</h2>
