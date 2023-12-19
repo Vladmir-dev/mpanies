@@ -61,19 +61,19 @@ const Home = () => {
       <Navbar />
       <Carousel />
       <Banner />
-      <div className="mt-[50px] mb-[50px] flex justify-center items-center uppercase text-[20px] font-light">
+      {/* <div className="mt-[50px] mb-[50px] flex justify-center items-center uppercase text-[20px] font-light">
         <h1>What's New For You</h1>
       </div>
       <div className="mb-[50px]">
         <NSlider products={new_products} />
-      </div>
+      </div> */}
       <ProductDesc />
-      <div className="mt-[60px] mb-[50px] flex justify-center items-center uppercase text-[20px] font-light">
+      {/* <div className="mt-[60px] mb-[50px] flex justify-center items-center uppercase text-[20px] font-light">
         <h1>BlockBuster Collection</h1>
       </div>
       <div className="mb-[50px]">
-        <NSlider products={new_products} />
-      </div>
+        <NSlider products={new_products} /> 
+      </div> */}
       <NewsLetter />
       <Footer />
     </div>

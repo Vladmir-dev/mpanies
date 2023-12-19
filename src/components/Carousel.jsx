@@ -35,7 +35,7 @@ const Carousel = () => {
       ) : (
         <Slider {...settings}>
           {slides.map((item, index) => (
-            <div className=" flex justify-center items-center w-[100vw] h-[100vh]">
+            <div key={index} className=" flex justify-center items-center w-[100vw] h-[100vh]">
               <div className="w-full h-full flex justify-center items-center px-4">
                 <div className="md:w-[40%] flex flex-col md:justify-start justify-center items-center md:items-start md:gap-8 gap-10">
                   <h3 className="uppercase md:text-[36px] font-thin text-[45px] md:text-start text-center">

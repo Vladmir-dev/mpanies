@@ -39,6 +39,8 @@ const Navbar = () => {
   const user = useSelector((state) => state.users.currentUser);
   let navigate = useNavigate();
 
+  console.log("products =>", products);
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 10) {
@@ -58,16 +60,16 @@ const Navbar = () => {
   // console.log("cart==>", cart);
 
   const totalPrice = cart.reduce(
-    (price, item) => price + item.qty * item.price,
+    (price, item) => price + item.qty * (item.price * (item.discount / 100)),
     0
   );
 
   useEffect(() => {
     const fetchData = async () => {
-      dispatch(AllProducts(token));
-      dispatch(get_user(token));
-      dispatch(fetchSlides(token));
-      dispatch(fetchCategories(token));
+      await dispatch(AllProducts(token));
+      await dispatch(get_user(token));
+      await dispatch(fetchSlides(token));
+      await dispatch(fetchCategories(token));
     };
     fetchData();
   }, [dispatch, token]);
@@ -77,16 +79,20 @@ const Navbar = () => {
     const query = e.target.value.toLowerCase();
     setQuery(query);
 
+    // console.log("products =>", products);
+
     const results = products.filter((product) => {
       const productNameIncludesQuery = product.name
         .toLowerCase()
         .includes(query);
+
       const categoryNameIncludesQuery = product.category.name
         .toLowerCase()
         .includes(query);
-      const subcategoryIncludesQuery = product.sub_category.some(
-        (subcategory) => subcategory.name.toLowerCase().includes(query)
-      );
+
+      const subcategoryIncludesQuery = product.sub_category.name
+        .toLowerCase()
+        .includes(query);
 
       return (
         productNameIncludesQuery ||
@@ -108,8 +114,8 @@ const Navbar = () => {
     <div
       className={
         show
-          ? "w-full bg-green-200 flex justify-center items-center p-5 top-0 fixed z-10 shadow-md"
-          : "fixed w-full  flex justify-center items-center z-10 p-5 top-0"
+          ? "md:w-full w-[100%] bg-green-200 flex justify-center items-center p-5 top-0 fixed z-10 shadow-md"
+          : "fixed md:w-full w-[100%]  flex justify-center items-center z-10 p-5 top-0"
       }
     >
       <div className="flex justify-between items-center w-full md:px-[50px] px-[20px]">
@@ -278,8 +284,11 @@ const Navbar = () => {
               </div>
               <FiShoppingBag className="hover:text-green-400" />
             </button>
+
+            {/* cart */}
+
             {showCart && (
-              <div className="bg-white fixed md:h-[100vh] h-[120vh] mt-[-60px] md:w-[450px] p-4 w-[300px] md:ml-[-240px] right-0  shadow-xl">
+              <div className="bg-white fixed md:h-[100vh] h-[120vh] mt-[-60px] md:w-[450px] p-4 w-[350px]  right-0  shadow-xl">
                 <div className=" flex justify-between">
                   <h1>Your Bag</h1>
                   <button onClick={() => setShowCart(!showCart)}>
@@ -350,7 +359,10 @@ const Navbar = () => {
 
                               <div className="">
                                 <h4 className="text-[18px] text-end ">
-                                  {item.price * item.qty} UGX
+                                  {item.price *
+                                    (item.discount / 100) *
+                                    item.qty}
+                                  UGX
                                 </h4>
                               </div>
                             </div>

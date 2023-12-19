@@ -24,7 +24,7 @@ function App() {
   // const [count, setCount] = useState(0)
 
   return (
-    <div className="font-sans">
+    <div className="font-sans box-border">
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistedStore}>
           <BrowserRouter>

@@ -48,7 +48,20 @@ const Scard = ({ item }) => {
           <AiFillStar />
           <AiFillStar />
         </div>
-        <h4 className="text-[16px]">UGX {item.price}</h4>
+
+        {item.discount > 0 ? (
+          <div>
+            <strike>
+              <h4 className="text-[16px]">UGX {item.price}</h4>
+            </strike>
+
+            <h4 className="text-[16px]">
+              UGX {parseFloat(item.price) * parseFloat(item.discount / 100)}
+            </h4>
+          </div>
+        ) : (
+          <h4 className="text-[16px]">UGX {parseFloat(item.price)}</h4>
+        )}
       </div>
     </div>
   );
