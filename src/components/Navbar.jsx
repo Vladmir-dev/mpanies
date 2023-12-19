@@ -60,7 +60,7 @@ const Navbar = () => {
   // console.log("cart==>", cart);
 
   const totalPrice = cart.reduce(
-    (price, item) => price + item.qty * (item.price * (item.discount / 100)),
+    (price, item) => price + item.qty * (item.price - (item.discount / 100)),
     0
   );
 
@@ -334,7 +334,7 @@ const Navbar = () => {
                                     {item.name}
                                   </h4>
                                   <h4 className="text-[15px]">
-                                    {item.price}.00 UGX
+                                    {parseFloat(item.price)} UGX
                                   </h4>
                                   <h4 className="text-[15px]">Color: Pink</h4>
                                   <div className="flex mt-[10px] justify-between items-center py-2 px-4 gap-5 w-[120px]  text-[18px] border-solid border-[1px] border-black">
@@ -359,10 +359,9 @@ const Navbar = () => {
 
                               <div className="">
                                 <h4 className="text-[18px] text-end ">
-                                  {item.price *
-                                    (item.discount / 100) *
-                                    item.qty}
-                                  UGX
+                                  {parseFloat(item.price) -
+                                    (parseFloat(item.discount) / 100) *
+                                      parseInt(item.qty)}
                                 </h4>
                               </div>
                             </div>
