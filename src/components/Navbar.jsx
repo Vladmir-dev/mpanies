@@ -336,7 +336,7 @@ const Navbar = () => {
                                   <h4 className="text-[15px]">
                                     {parseFloat(item.price)} UGX
                                   </h4>
-                                  <h4 className="text-[15px]">Color: Pink</h4>
+                                  {/* <h4 className="text-[15px]">Color: Pink</h4> */}
                                   <div className="flex mt-[10px] justify-between items-center py-2 px-4 gap-5 w-[120px]  text-[18px] border-solid border-[1px] border-black">
                                     <button
                                       onClick={() =>

@@ -28,7 +28,7 @@ const Smain = ({ products }) => {
   const recordsPerPage = 16;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
-  const records = products?.slice(firstIndex, lastIndex);
+  const records = products.slice(firstIndex, lastIndex);
   const npage = Math.ceil(products?.length / recordsPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 

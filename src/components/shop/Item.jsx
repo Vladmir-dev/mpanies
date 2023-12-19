@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
-const Item = ({ title, options }) => {
+const Item = ({
+  title,
+  options,
+  selectedOptions,
+  setSelectedOptions,
+  minPrice,
+  setMinPrice,
+  maxPrice,
+  setMaxPrice,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState([]);
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
+  // const [selectedOptions, setSelectedOptions] = useState([]);
+  // const [minPrice, setMinPrice] = useState("");
+  // const [maxPrice, setMaxPrice] = useState("");
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -36,7 +45,6 @@ const Item = ({ title, options }) => {
         </button>
       </div>
 
-      
       {isOpen && title !== "Price" ? (
         <div className="mt-4 text-[18px]">
           {options.map((option) => (
@@ -53,11 +61,10 @@ const Item = ({ title, options }) => {
               </label>
             </div>
           ))}
-          
         </div>
       ) : (
         <div>
-            {(isOpen && title === "Price") && (
+          {isOpen && title === "Price" && (
             <div className="flex gap-2">
               <div className="flex flex-col items-center mt-2">
                 <label htmlFor="minPrice">Min Price:</label>
@@ -82,7 +89,6 @@ const Item = ({ title, options }) => {
             </div>
           )}
         </div>
-        
       )}
     </div>
   );
