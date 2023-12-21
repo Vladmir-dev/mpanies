@@ -6,17 +6,20 @@ import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { add_to_cart } from "../../features/cart/cartActions";
 import icon from "../../assets/favicon.png";
+import { useNavigate } from "react-router-dom";
 
 const Scard = ({ item }) => {
   const [show, setShow] = useState(false);
 
   const dispatch = useDispatch();
+  let naviagte = useNavigate();
 
   return (
     <div
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
       className="m-2 bg-white md:max-w-[260px] md:w-[250px] w-[200px] "
+      onClick={() => naviagte(`/product/${item.id}`)}
     >
       <div className="w-full h-[400px] md:max-h-[410px] md:h-[400px]  h-[200px] group">
         <img src={item.image} alt={item.name} className="w-full h-full cover" />
