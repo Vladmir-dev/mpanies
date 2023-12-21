@@ -29,7 +29,7 @@ const Scard = ({ item }) => {
         <div className="hidden group-hover:block duration-500">
           <div className="flex  justify-center items-center md:mt-[-200px] mt-[-200px] md:gap-8 gap-5 duration-500">
             <button
-              onClick={() => dispatch(add_to_cart(item))}
+              onClick={() => dispatch(add_to_cart({ product: item, qty: 1 }))}
               className="p-2 rounded-md bg-white hover:bg-black hover:text-white duration-500"
             >
               <FaCartPlus />

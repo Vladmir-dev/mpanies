@@ -1,9 +1,10 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import breadcrumb from "../assets/breadcrumb.jpg";
 import Footer from "../components/Footer";
+import { add_to_cart } from "../features/cart/cartActions";
 
 const ProductDetial = () => {
   const bgImageStyle = {
@@ -21,6 +22,12 @@ const ProductDetial = () => {
   const product = products?.filter((item) => item.id == id);
 
   console.log("The product ===>", product);
+
+  const [quantity, setQuantity] = useState(
+    !product[0].qty ? 0 : product[0].qty
+  );
+
+  const dispatch = useDispatch();
 
   return (
     <div className="box-border">
@@ -48,7 +55,11 @@ const ProductDetial = () => {
               UGX {product[0].price}
             </h2>
 
-            <h2 className={`text-[25px] md:text-left text-center ${product[0].in_stock ? "text-green-400" : "text-red-500"}`}>
+            <h2
+              className={`text-[25px] md:text-left text-center ${
+                product[0].in_stock ? "text-green-400" : "text-red-500"
+              }`}
+            >
               {product[0].in_stock ? "In Stock" : "Out Of Stock"}
             </h2>
 
@@ -58,20 +69,23 @@ const ProductDetial = () => {
               </label>
               <div className="flex mt-[10px] justify-between items-center py-2 px-4 gap-5 w-[120px]  text-[18px] border-solid border-[1px] border-black">
                 <button
-                // onClick={() => dispatch(decrease_qty(item))}
+                  onClick={() =>
+                    setQuantity(quantity < 0 ? quantity : quantity - 1)
+                  }
                 >
                   -
                 </button>
-                <h4>{!product[0].qty ? 0 : product[0].qty}</h4>
-                <button
-                // onClick={() => dispatch(add_to_cart(item))}
-                >
-                  +
-                </button>
+                <h4>{quantity}</h4>
+                <button onClick={() => setQuantity(quantity + 1)}>+</button>
               </div>
             </div>
 
-            <button className="bg-black text-white px-4 py-3 hover:bg-green-500 duration-500">
+            <button
+              onClick={() =>
+                dispatch(add_to_cart({ product: product[0], qty: quantity }))
+              }
+              className="bg-black text-white px-4 py-3 hover:bg-green-500 duration-500"
+            >
               Add To Cart
             </button>
           </div>

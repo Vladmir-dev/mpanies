@@ -60,7 +60,7 @@ const Navbar = () => {
   // console.log("cart==>", cart);
 
   const totalPrice = cart.reduce(
-    (price, item) => price + item.qty * (item.price - (item.discount / 100)),
+    (price, item) => price + item.qty * (item.price - item.discount / 100),
     0
   );
 
@@ -340,7 +340,12 @@ const Navbar = () => {
                                   <div className="flex mt-[10px] justify-between items-center py-2 px-4 gap-5 w-[120px]  text-[18px] border-solid border-[1px] border-black">
                                     <button
                                       onClick={() =>
-                                        dispatch(decrease_qty(item))
+                                        dispatch(
+                                          decrease_qty({
+                                            product: item,
+                                            qty: 1,
+                                          })
+                                        )
                                       }
                                     >
                                       -
@@ -348,7 +353,9 @@ const Navbar = () => {
                                     <h4>{item.qty}</h4>
                                     <button
                                       onClick={() =>
-                                        dispatch(add_to_cart(item))
+                                        dispatch(
+                                          add_to_cart({ product: item, qty: 1 })
+                                        )
                                       }
                                     >
                                       +

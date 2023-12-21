@@ -36,18 +36,20 @@ const cartSlice = createSlice({
       const data = action.payload;
       console.log("product id", data);
 
-      const productExists = state.cartItems.find((item) => item.id === data.id);
+      const productExists = state.cartItems.find(
+        (item) => item.id === data.product.id
+      );
 
       if (productExists) {
         state.cartItems = state.cartItems.map((item) =>
-          item.id === data.id
-            ? { ...productExists, qty: productExists.qty + 1 }
+          item.id === data.product.id
+            ? { ...productExists, qty: productExists.qty + data.qty }
             : item
         );
       } else {
         state.cartItems.push({
-          ...data,
-          qty: 1,
+          ...data.product,
+          qty: data.qty,
           // size: data.size,
           // selectedImageURL: data.selectedImageURL,
           // productId:data.id
@@ -78,19 +80,19 @@ const cartSlice = createSlice({
     builder.addCase(decrease_qty.fulfilled, (state, action) => {
       console.log("payload ==>", action.payload);
       state.is_loading = false;
-      const product = action.payload;
+      const data = action.payload;
       const productExists = state.cartItems.find(
-        (item) => item.id === product.id
+        (item) => item.id === data.product.id
       );
 
       if (productExists && productExists.qty === 1) {
         state.cartItems = state.cartItems.filter(
-          (item) => item.id !== product.id
+          (item) => item.id !== data.product.id
         );
       } else if (productExists) {
         state.cartItems = state.cartItems.map((item) =>
-          item.id === product.id
-            ? { ...productExists, qty: productExists.qty - 1 }
+          item.id === data.product.id
+            ? { ...productExists, qty: productExists.qty - data.qty }
             : item
         );
       }
