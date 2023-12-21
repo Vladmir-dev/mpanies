@@ -4,13 +4,13 @@ import Smain from "./Smain";
 
 const Shop = ({ data }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(1000000000);
 
   // console.log("The data *****", data);
 
   const filterData = () => {
-    if (!minPrice || !maxPrice) {
+    if (minPrice < 0 || maxPrice < 0) {
       return data; // No filter applied if minPrice or maxPrice is not provided
     }
 
