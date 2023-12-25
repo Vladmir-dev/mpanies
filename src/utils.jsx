@@ -1,9 +1,10 @@
 const localdomain = "http://localhost:8000";
 const hdomain = "https://api.mpanies.com";
 
-export const baseurl = `${hdomain}/api/v1`;
+export const baseurl = `${localdomain}/api/v1`;
 
 export const links = [
+
   // {
   //   name: "Home",
   //   link: "/",
@@ -84,6 +85,7 @@ export const links = [
   //     },
   //   ],
   // },
+  
   {
     name: "Skin Care",
     link: "1",

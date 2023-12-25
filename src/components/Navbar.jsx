@@ -23,6 +23,7 @@ import { fetch_results } from "../features/search/searchActions";
 import { logout } from "../features/auth/authSlice";
 import { fetchSlides } from "../features/slide/SlideActions";
 import { fetchCategories } from "../features/category/categoryActions";
+import { get_brands } from "../features/brands/brandActions";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -70,6 +71,7 @@ const Navbar = () => {
       await dispatch(get_user(token));
       await dispatch(fetchSlides(token));
       await dispatch(fetchCategories(token));
+      await dispatch(get_brands(token));
     };
     fetchData();
   }, [dispatch, token]);
@@ -107,6 +109,7 @@ const Navbar = () => {
 
   const categories = useSelector((state) => state.category.categories);
   const loading = useSelector((state) => state.category.is_loading);
+  const brands = useSelector((state) => state.brands.brands);
 
   // console.log("categories ==>", categories);
 
@@ -211,6 +214,19 @@ const Navbar = () => {
               )}
             </div>
           ))}
+          <div className="group">
+            <h1 className="group-hover:text-green-400 duration-500">Brands</h1>
+
+            <div className="hidden md:group-hover:block absolute p-4 bg-white flex flex-col ">
+              {brands?.map((item, index) => (
+                <Link to={`/brand/${item.id}`}>
+                  <li className="p-2" key={index}>
+                    {item.name}
+                  </li>
+                </Link>
+              ))}
+            </div>
+          </div>
 
           <div className="md:hidden mt-[50px]">
             <div className="flex flex-col justify-start items-start gap-5">

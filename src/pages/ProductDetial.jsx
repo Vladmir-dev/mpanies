@@ -18,6 +18,9 @@ const ProductDetial = () => {
   const { id } = useParams();
 
   const products = useSelector((state) => state.products.products);
+  const cart = useSelector((state) => state.cart.cartItems);
+
+//   const incart = useSelector()
 
   const product = products?.filter((item) => item.id == id);
 
@@ -28,6 +31,7 @@ const ProductDetial = () => {
   );
 
   const dispatch = useDispatch();
+
 
   return (
     <div className="box-border">
@@ -44,14 +48,14 @@ const ProductDetial = () => {
             <img
               src={product[0].image}
               alt={product[0].name}
-              className="w-[400px] h-[660px]"
+              className="md:w-[400px] w-[300px] md:h-[600px] h-[380px]"
             />
           </div>
-          <div className="flex  flex-col items-start md:w-[40%] gap-5 w-full justify-start">
-            <h1 className="text-[50px] fex-wrap md:text-left text-center">
+          <div className="flex  flex-col md:items-start items-center md:w-[40%] gap-5 w-full md:justify-start justify-center">
+            <h1 className="md:text-[50px] text-[30px] fex-wrap md:text-left text-center">
               {product[0].name}
             </h1>
-            <h2 className="text-[25px] md:text-left text-center">
+            <h2 className="md:text-[25px] text-[20px] md:text-left text-center">
               UGX {product[0].price}
             </h2>
 
