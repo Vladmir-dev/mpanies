@@ -51,18 +51,35 @@ const Footer = () => {
         <div className="flex flex-col gap-5">
           <h1 className="text-[20px] uppercase">Info</h1>
           <ul className="flex flex-col gap-2">
-            <Link to="/about">
+            {/* <Link to="/about">
               {" "}
               <li className="flex gap-3 justify-start items-center">
                 {" "}
                 <MdOutlineKeyboardArrowRight /> About Us
               </li>{" "}
+            </Link> */}
+            <Link to="/privacypolicy">
+              {" "}
+              <li className="flex gap-3 justify-start items-center">
+                {" "}
+                <MdOutlineKeyboardArrowRight /> Privacy Policy
+              </li>{" "}
+            </Link>
+            <Link to="/terms">
+              {" "}
+              <li className="flex gap-3 justify-start items-center">
+                {" "}
+                <MdOutlineKeyboardArrowRight /> Terms & Conditions
+              </li>{" "}
             </Link>
 
+            <Link to="/returns">
             <li className="flex gap-3 justify-start items-center">
               <MdOutlineKeyboardArrowRight />
               Shipping & Returns
             </li>
+            </Link>
+            
           </ul>
         </div>
 

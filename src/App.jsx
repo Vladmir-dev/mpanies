@@ -21,6 +21,10 @@ import VerifyOtp from "./pages/VerifyOtp";
 import SubCategoriesPage from "./pages/SubCategoriesPage";
 import ProductDetial from "./pages/ProductDetial";
 import BrandPage from "./pages/BrandPage";
+import RequestPage from "./pages/RequestPage";
+import TermsConditions from "./pages/TermsConditions";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import ReturnPolicyPage from "./pages/ReturnPolicyPage";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -37,8 +41,8 @@ function App() {
                 path="/category/:id/subcategories/:subcategoryId"
                 element={<SubCategoriesPage />}
               />
-              <Route path="brand/:id" element={<BrandPage />}/>
-              
+              <Route path="/brand/:id" element={<BrandPage />}/>
+              <Route path="/request" element={<RequestPage />}/>
               <Route path="/product/:id" element={<ProductDetial />} />
               <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login />} />
@@ -48,6 +52,9 @@ function App() {
               <Route path="/search" element={<Search />} />
               <Route path="/forgot" element={<ForgotPassword />} />
               <Route path="/otp" element={<VerifyOtp />} />
+              <Route path="/terms" element={<TermsConditions />} />
+              <Route path="/privacypolicy" element={<PrivacyPolicyPage />} />
+              <Route path="/returns" element={<ReturnPolicyPage />} />
 
               <Route element={<ProtectedRoutes />}>
                 <Route path="/checkout" element={<Checkout />} />

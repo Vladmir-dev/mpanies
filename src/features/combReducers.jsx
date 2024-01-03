@@ -9,7 +9,7 @@ import slideReducer from "./slide/SlideSlice";
 import categoryReducer from "./category/categorySlice";
 import orderReducer from "./orders/orderSlice";
 import brandReducer from "./brands/brandSlice";
-
+import requestReducer from "./requests/requestSlice";
 // import Cart from "../../common/Cart/Cart";
 // import userReducer from './addItem/userSlice'
 
@@ -22,6 +22,7 @@ const rootReducer = combineReducers({
   category: categoryReducer,
   order: orderReducer,
   brands: brandReducer,
+  request: requestReducer,
 });
 
 export default rootReducer;

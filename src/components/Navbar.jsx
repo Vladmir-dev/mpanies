@@ -38,7 +38,7 @@ const Navbar = () => {
   const token = useSelector((state) => state.users.token);
   const products = useSelector((state) => state.products.products);
   const user = useSelector((state) => state.users.currentUser);
-  let navigate = useNavigate();
+  const  navigate = useNavigate();
 
   console.log("products =>", products);
 
@@ -426,7 +426,7 @@ const Navbar = () => {
               <AiOutlineSearch className="hover:text-green-500" />
             </button>
             {search && (
-              <div className="bg-white fixed w-[100vw] h-[120px] top-0 left-0 flex justify-center gap-3 md:p-5 p-2 items-center">
+              <div className="bg-white fixed w-[100vw] md:h-[120px] shadow-md top-0 left-0 flex md:flex-row flex-col justify-center gap-3 md:p-5 p-2 items-center">
                 {/* <h2 className="md:block hidden">Search</h2> */}
 
                 <div>
@@ -437,6 +437,12 @@ const Navbar = () => {
                     onChange={handleSearch}
                   />
                 </div>
+                <button
+                  onClick={() => navigate("/request")}
+                  className="bg-black text-white px-4 py-2 hover:bg-green-500 duration-500"
+                >
+                  Make A Request
+                </button>
                 <button onClick={() => setSearch(!search)}>
                   <AiOutlineClose className="text-[27px]" />
                 </button>
