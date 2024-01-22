@@ -11,8 +11,16 @@ import image4 from "../assets/shop-new-22.jpg";
 import image5 from "../assets/shop-new-23.jpg";
 import NewsLetter from "../components/NewsLetter";
 import Footer from "../components/Footer";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+  let products = useSelector((state) => state.products.products);
+  products = products.slice(0, products.length - 1);
+  const productsArray = products.filter(
+    (product) => product.is_new_arival === true
+  );
+  const featured = products.filter((product) => product.is_featured === true);
+
   const new_products = [
     {
       id: 1,
@@ -61,19 +69,19 @@ const Home = () => {
       <Navbar />
       <Carousel />
       <Banner />
-      {/* <div className="mt-[50px] mb-[50px] flex justify-center items-center uppercase text-[20px] font-light">
+      <div className="mt-[50px] mb-[50px] flex justify-center items-center uppercase text-[20px] font-light">
         <h1>What's New For You</h1>
       </div>
       <div className="mb-[50px]">
-        <NSlider products={new_products} />
-      </div> */}
+        <NSlider products={productsArray} />
+      </div>
       <ProductDesc />
-      {/* <div className="mt-[60px] mb-[50px] flex justify-center items-center uppercase text-[20px] font-light">
-        <h1>BlockBuster Collection</h1>
+      <div className="mt-[60px] mb-[50px] flex justify-center items-center uppercase text-[20px] font-light">
+        <h1>Featured Collection</h1>
       </div>
       <div className="mb-[50px]">
-        <NSlider products={new_products} /> 
-      </div> */}
+        <NSlider products={featured} />
+      </div>
       <NewsLetter />
       <Footer />
     </div>

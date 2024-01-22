@@ -74,12 +74,11 @@ const Footer = () => {
             </Link>
 
             <Link to="/returns">
-            <li className="flex gap-3 justify-start items-center">
-              <MdOutlineKeyboardArrowRight />
-              Shipping & Returns
-            </li>
+              <li className="flex gap-3 justify-start items-center">
+                <MdOutlineKeyboardArrowRight />
+                Shipping & Returns
+              </li>
             </Link>
-            
           </ul>
         </div>
 

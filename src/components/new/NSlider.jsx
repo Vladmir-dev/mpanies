@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import NCard from "./NCard";
 
 import Slider from "react-slick";
+import Scard from "../shop/Scard";
 // import Carousel from "react-multi-carousel";
 // import "react-multi-carousel/lib/styles.css";
 
@@ -73,6 +74,7 @@ const NSlider = ({ products }) => {
           {products.map((slide, index) => {
             return (
               <div key={index}>
+                {/* <Scard item={slide} /> */}
                 <NCard item={slide} />
                 {/* <img src={slide.img} alt={`slide${index}`} /> */}
               </div>
@@ -81,7 +83,7 @@ const NSlider = ({ products }) => {
         </Slider>
       </div>
     </div>
-    
+
     // <div
     //   className={`carousel-wrapper ${effect}`}
     //   onKeyDown={handleKeyDown}

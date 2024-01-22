@@ -38,7 +38,7 @@ const Navbar = () => {
   const token = useSelector((state) => state.users.token);
   const products = useSelector((state) => state.products.products);
   const user = useSelector((state) => state.users.currentUser);
-  const  navigate = useNavigate();
+  const navigate = useNavigate();
 
   console.log("products =>", products);
 
@@ -341,7 +341,7 @@ const Navbar = () => {
                             <div className="flex justify-between w-full ">
                               <div className="flex gap-5">
                                 <img
-                                  src={item.image}
+                                  src={item.image1}
                                   alt={`cart item ${index}`}
                                   className="w-[120px] h-[120px]"
                                 />
