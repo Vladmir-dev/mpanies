@@ -1,7 +1,7 @@
 const localdomain = "http://localhost:8000";
 const hdomain = "https://api.mpanies.com";
 
-export const baseurl = `${localdomain}/api/v1`;
+export const baseurl = `${hdomain}/api/v1`;
 
 export const links = [
   // {
