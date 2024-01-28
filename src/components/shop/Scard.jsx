@@ -39,7 +39,7 @@ const Scard = ({ item }) => {
           <img src={icon} className="w-full h-full object-cover" />
         </div>
 
-        <div className="hidden group-hover:block duration-500">
+        <div className="hidden group-hover:block duration-500 absolute top-0 right-0 w-full h-full">
           <div className="w-full h-[400px] md:max-h-[410px] md:h-[400px] h-[200px] group flex md:gap-8 gap-5 justify-center items-center">
             <button
               onClick={() => dispatch(add_to_cart({ product: item, qty: 1 }))}
