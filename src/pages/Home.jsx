@@ -15,11 +15,12 @@ import { useSelector } from "react-redux";
 
 const Home = () => {
   let products = useSelector((state) => state.products.products);
-  products = products.slice(0, products.length - 1);
+
+  products = products?.slice(0, products.length - 1);
   const productsArray = products.filter(
     (product) => product.is_new_arival === true
   );
-  const featured = products.filter((product) => product.is_featured === true);
+  const featured = products?.filter((product) => product.is_featured === true);
 
   const new_products = [
     {

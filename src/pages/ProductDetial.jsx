@@ -77,7 +77,7 @@ const ProductDetial = () => {
               />
             </div>
             <div className="flex  flex-col md:items-start items-center md:w-[40%] gap-5 w-full md:justify-start justify-center">
-              <h1 className="md:text-[50px] text-[30px] fex-wrap md:text-left text-center">
+              <h1 className="md:text-[40px] md:w-[75%] text-[27px] fex-wrap md:text-left text-center">
                 {product.name}
               </h1>
               <h2 className="md:text-[25px] text-[20px] md:text-left text-center">
@@ -140,8 +140,7 @@ const ProductDetial = () => {
             products
               ?.filter(
                 (item) =>
-                  item.category === product.category &&
-                  item.id !== product.id
+                  item.category === product.category && item.id !== product.id
               )
               .slice(0, 8)
               .map((item) => <RCard key={item.id} item={item} />)}

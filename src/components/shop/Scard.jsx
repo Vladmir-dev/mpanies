@@ -72,7 +72,9 @@ const Scard = ({ item }) => {
             </strike>
 
             <h4 className="text-[16px]">
-              UGX {parseFloat(item.price) - parseFloat(item.discount) }
+              UGX{" "}
+              {parseFloat(item.price) -
+                parseFloat(item.price) * (parseFloat(item.discount) / 100)}
             </h4>
           </div>
         ) : (

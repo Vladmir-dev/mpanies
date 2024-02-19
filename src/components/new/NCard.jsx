@@ -29,7 +29,7 @@ const NCard = ({ item }) => {
         <img src={item.image1} alt="product" className="w-full h-full" />
         {/* {show && ( */}
         <div className="hidden group-hover:block duration-500">
-          <div className="bg-red-500 flex  justify-center items-center md:mt-[-250px] mt-[-200px] md:gap-8 gap-5 duration-500">
+          <div className="flex  justify-center items-center md:mt-[-250px] mt-[-200px] md:gap-8 gap-5 duration-500">
             <button
               onClick={() => dispatch(add_to_cart({ product: item, qty: 1 }))}
               className="p-2 bg-white  hover:bg-black hover:text-white duration-500"
