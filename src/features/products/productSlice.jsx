@@ -22,7 +22,12 @@ const productsSlice = createSlice({
         builder.addCase(AllProducts.fulfilled, (state, action) => {
             // console.log("payload ==>", action.payload)
             state.is_loading = false;
-            state.products = action.payload;
+            if(action.payload.status === 200 || action.payload.status === "200"){
+                state.products = action.payload.data
+            }else{
+                console.log("error", action.payload)
+            }
+            // state.products = action.payload;
         });
 
         builder.addCase(AllProducts.rejected, (state, action) => {

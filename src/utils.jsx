@@ -1,7 +1,22 @@
 const localdomain = "http://localhost:8000";
 const hdomain = "https://api.mpanies.com";
 
-export const baseurl = `${localdomain}/api/v1`;
+export const baseurl = `${hdomain}/api/v1`;
+
+import { createSelector } from 'reselect';
+
+const selectProducts = (state) => state.products.products;
+
+export const selectNewArrivalProducts = createSelector(
+  selectProducts,
+  (products) => products.filter((product) => product.is_new_arival === true)
+);
+
+export const selectFeaturedProducts = createSelector(
+  selectProducts,
+  (products) => products.filter((product) => product.is_featured === true)
+);
+
 
 export const links = [
   // {

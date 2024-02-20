@@ -67,11 +67,11 @@ const Navbar = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await dispatch(AllProducts(token));
-      await dispatch(get_user(token));
-      await dispatch(fetchSlides(token));
-      await dispatch(fetchCategories(token));
-      await dispatch(get_brands(token));
+      dispatch(AllProducts(token));
+      dispatch(get_user(token));
+      dispatch(fetchSlides(token));
+      dispatch(fetchCategories(token));
+      dispatch(get_brands(token));
     };
     fetchData();
   }, [dispatch, token]);

@@ -16,11 +16,11 @@ export const AllProducts = createAsyncThunk(
 
     try {
       const response = await axios.get(`${baseurl}/product`);
-      // console.log("response ===>", response);
+      console.log("response ===>", response);
 
       // console.log("response yeahh", data.data);
 
-      return response.data;
+      return response
     } catch (error) {
       console.log("The error ===>", error);
       // if (error.response && error.response.data.message) {
