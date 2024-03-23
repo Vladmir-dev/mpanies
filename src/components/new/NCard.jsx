@@ -46,7 +46,22 @@ const NCard = ({ item }) => {
       </div>
       <div className="w-full flex flex-col justify-center items-center mt-[20px] gap-5">
         <h4 className="uppercase text-[16px] font-light">{item.name}</h4>
-        <h4 className="text-[16px]">UGX {item.price}</h4>
+        {/* <h4 className="text-[16px]">UGX {item.price}</h4> */}
+        {item.discount > 0 ? (
+          <div>
+            <strike>
+              <h4 className="text-[16px]">UGX {Math.trunc(item.price)}</h4>
+            </strike>
+
+            <h4 className="text-[16px]">
+              UGX{" "}
+              {parseFloat(item.price) -
+                parseFloat(item.price) * (parseFloat(item.discount) / 100)}
+            </h4>
+          </div>
+        ) : (
+          <h4 className="text-[16px]">UGX {parseFloat(item.price)}</h4>
+        )}
       </div>
     </div>
   );
