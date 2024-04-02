@@ -28,7 +28,7 @@ const ProductDetial = () => {
 
   const product = products?.filter((item) => item.id == id)[0];
 
-  // console.log("The products ===>", products);
+  console.log("The products ===>", product);
 
   const [quantity, setQuantity] = useState(0);
   const [addedToCart, setAddedToCart] = useState(false);
@@ -81,7 +81,7 @@ const ProductDetial = () => {
                 {product.name}
               </h1>
               <h2 className="md:text-[25px] text-[20px] md:text-left text-center">
-                UGX {product.price}
+                UGX {parseInt(product.price)}
               </h2>
 
               <h2
@@ -133,14 +133,14 @@ const ProductDetial = () => {
         </div>
       )}
 
-      <div>
+      <div className="flex flex-col  justify-center items-center">
         <h1 className="text-[30px] text-center">Related Products</h1>
-        <div className="grid grid-cols-3 md:gap-10 gap-5 p-5 mb-[50px]">
+        <div className="flex w-[75%] flex-wrap md:gap-10 gap-5 p-5 mb-[50px]">
           {products.length > 0 &&
             products
               ?.filter(
                 (item) =>
-                  item.category === product.category && item.id !== product.id
+                  item.category.name === product.category.name && item.id !== product.id
               )
               .slice(0, 8)
               .map((item) => <RCard key={item.id} item={item} />)}
